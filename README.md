@@ -14,12 +14,16 @@
  - Node做运行环境,使用experimental-modules参数起Express服务使之支持ES6模块语法，如果是非windows的生产环境下还会加载cluster模块进行负载均衡。express服务单独写router监听接口，或者直接通过axios转发请求。
 
 
+
+## Start
+
 This project was bootstrapped with [Create Next App](https://github.com/segmentio/create-next-app).
 
 Find the most recent version of this guide at [here](https://github.com/segmentio/create-next-app/blob/master/lib/templates/default/README.md). And check out [Next.js repo](https://github.com/zeit/next.js) for the most up-to-date info.
 
 ## Table of Contents
 
+- [Start](#start)
 - [Table of Contents](#table-of-contents)
 - [Questions? Feedback?](#questions-feedback)
 - [Folder Structure](#folder-structure)
@@ -37,6 +41,7 @@ Find the most recent version of this guide at [here](https://github.com/segmenti
 - [Syntax Highlighting](#syntax-highlighting)
 - [Deploy to Now](#deploy-to-now)
 - [Something Missing?](#something-missing)
+- [Warning?](#warning)
 
 ## Questions? Feedback?
 
@@ -251,3 +256,8 @@ You can find more details about [`now` here](https://zeit.co/now).
 ## Something Missing?
 
 If you have ideas for how we could improve this readme or the project in general, [let us know](https://github.com/segmentio/create-next-app/issues) or [contribute some!](https://github.com/segmentio/create-next-app/edit/master/lib/templates/default/README.md)
+
+
+## Warning?
+
+If i die young?
