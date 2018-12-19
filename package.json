@@ -1,0 +1,33 @@
+{
+  "name": "create-next-example-app",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "dev:m": "node --experimental-modules server.mjs"
+  },
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "antd": "^3.11.2",
+    "babel-plugin-import": "^1.11.0",
+    "cross-env": "^5.2.0",
+    "express": "^4.16.4",
+    "next": "^7.0.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  },
+  "bable": {
+    "presets": [
+      "next/babel"
+    ],
+    "plugins": [
+      [
+        "import",
+        {
+          "libraryName": "antd",
+          "style": "css"
+        }
+      ]
+    ]
+  }
+}
