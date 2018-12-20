@@ -1,14 +1,13 @@
 import React, { PureComponent } from 'react';
-import Container from './../components/container';
+import Lean from './../src/view/lean';
 
-export default class Lean extends React.Component {
+export default class LeanPage extends React.Component {
+    constructor(props) {
+        super(props)
+    }
     render() {
         return (
-            <Container>
-                <div>
-                    框架搭建
-                </div>
-            </Container>
+            <Lean {...this.props} />
         )
     }
 }

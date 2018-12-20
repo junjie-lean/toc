@@ -4,7 +4,7 @@ export default class Error extends React.Component {
     render() {
         return (
             <div>
-                error
+                错误页面error
             </div>
         )
     }
