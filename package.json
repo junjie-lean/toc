@@ -3,7 +3,6 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
     "dev:m": "cross-env NODE_ENV=development node --experimental-modules server.mjs",
     "pro:m": "build && cross-env NODE_ENV=production node --experimental-modules server.mjs"
   },
