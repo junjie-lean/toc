@@ -1,30 +1,8 @@
-#### 主要使用到的技术栈：
- - React
- - React-redux
- - Ant design
- - Axios
- - Next
- - Node.js
- - Express
-
-#### 说明：
- - 使用Next框架是因为Next的UI层是基于React的语法实现，在React使用的比较熟练的情况下，写起Next组件非常快；如果是对Vue语法比较熟悉的情况下，可以考虑Next作者所作的另一个SSR框架“Nuxt”。
- - 使用react-redux作为状态管理器，但是这里点有已个比较棘手的问题就是，需要使在服务端和客户端的同一页面都达到状态一致。
- - Ant design 做UI组件库。
- - Node做运行环境,使用experimental-modules参数起Express服务使之支持ES6模块语法，如果是非windows的生产环境下还会加载cluster模块进行负载均衡。express服务单独写router监听接口，或者直接通过axios转发请求。
-
-
-
-## Start
-
-This project was bootstrapped with [Create Next App](https://github.com/segmentio/create-next-app).
-
-Find the most recent version of this guide at [here](https://github.com/segmentio/create-next-app/blob/master/lib/templates/default/README.md). And check out [Next.js repo](https://github.com/zeit/next.js) for the most up-to-date info.
-
-## Table of Contents
-
+- [框架介绍](#%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D)
+- [主要使用到的技术栈](#%E4%B8%BB%E8%A6%81%E4%BD%BF%E7%94%A8%E5%88%B0%E7%9A%84%E6%8A%80%E6%9C%AF%E6%A0%88)
+- [说明](#%E8%AF%B4%E6%98%8E)
+- [Why Next?](#why-next)
 - [Start](#start)
-- [Table of Contents](#table-of-contents)
 - [Questions? Feedback?](#questions-feedback)
 - [Folder Structure](#folder-structure)
 - [Available Scripts](#available-scripts)
@@ -41,7 +19,56 @@ Find the most recent version of this guide at [here](https://github.com/segmenti
 - [Syntax Highlighting](#syntax-highlighting)
 - [Deploy to Now](#deploy-to-now)
 - [Something Missing?](#something-missing)
-- [Warning?](#warning)
+
+## 框架介绍
+
+搭建此框架的初衷是，在规范前端开发方式的前提下尽量优化用户体验。
+
+
+## 主要使用到的技术栈
+
+*业务级开发人员仅需要了解：*
+ - React
+ - React-redux
+ - Ant design
+ - Axios
+  
+*框架级开发人员需要额外了解：*
+ - Next
+ - Node.js
+ - Express
+ - SSR相关知识
+
+
+## 说明
+ - 使用Next框架是因为Next的UI层是基于React的语法实现，在React使用的比较熟练的情况下，写起Next组件非常轻松；如果是对Vue语法比较熟悉的情况下，可以考虑Next作者所作的另一个SSR框架“Nuxt”。
+ - 使用react-redux作为状态管理器，但是这里点有已个比较棘手的问题就是，需要使在服务端和客户端的同一页面都达到状态一致。
+ - Ant design 做UI组件库。
+ - Node做运行环境,使用experimental-modules参数起Express服务使之支持ES6模块语法，如果是非windows的生产环境下还会加载cluster模块进行负载均衡。express服务单独写router监听接口，或者直接通过axios转发请求。
+
+
+## Why Next?
+Next是非常轻量化的SSR框架，该项目启动到现在已经有非常多的互联网公司使用了该框架，这些互联网公司和Next的作者一起推动着Next框架的发展。目前Next的版本已经发展到7.x，已经达到一个稳定的、产品级的程度。
+
+使用Next框架实现的案例有：
+  - [腾讯门户(移动端)](#https://xw.qq.com/)
+  - [漫威官网](#https://www.marvel.com/)
+  - [Nike官网](#https://www.nike.com/)
+  - [InvisionAPP官网](#https://www.invisionapp.com/)
+  - [Docker官网](#https://success.docker.com/)
+  - ...
+  
+Next默认支持HTML-Chunk，即客户端每次请求，server端只会返回当前页需要HTML资源，Next会把整个前端项目切割成不同的chunk，实现了请求资源最小化。
+
+Next轻量化，首屏响应时间只需要30ms左右，同等量级的页面首屏响应速度应该在200ms左右。因为响应速度快，也非常适合做web混编APP嵌入。
+
+使用React语法，Reacter不需要投入过多学习时间，过度平缓。
+
+## Start
+
+This project was bootstrapped with [Create Next App](https://github.com/segmentio/create-next-app).
+
+Find the most recent version of this guide at [here](https://github.com/segmentio/create-next-app/blob/master/lib/templates/default/README.md). And check out [Next.js repo](https://github.com/zeit/next.js) for the most up-to-date info.
 
 ## Questions? Feedback?
 
@@ -257,7 +284,3 @@ You can find more details about [`now` here](https://zeit.co/now).
 
 If you have ideas for how we could improve this readme or the project in general, [let us know](https://github.com/segmentio/create-next-app/issues) or [contribute some!](https://github.com/segmentio/create-next-app/edit/master/lib/templates/default/README.md)
 
-
-## Warning?
-
-If i die young?

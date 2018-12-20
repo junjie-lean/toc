@@ -36,5 +36,9 @@
       ]
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "author": {
+    "name": "lean",
+    "email": "junjie.lean@foxmail.com"
+  }
 }
