@@ -11,7 +11,7 @@ const app = next({
 const handle = app.getRequestHandler()
 const osType = process.platform;
 
-console.log(process.pid)
+// console.log(process.pid)
 let startServer = () => {
     app.prepare().then(() => {
         const server = express();
