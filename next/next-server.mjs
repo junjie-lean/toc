@@ -1,3 +1,14 @@
+/*
+ * @Author: junjie.lean 
+ * @Date: 2018-12-21 23:11:46 
+ * @Last Modified by: lean
+ * @Last Modified time: 2018-12-21 23:49:58
+ */
+
+/**
+ * next服务，主要负责服务端渲染的实现
+ */
+
 import express from 'express';
 import next from 'next';
 import userRouter from './../express-server/router/user';

@@ -1,3 +1,15 @@
+/*
+ * @Author: junjie.lean 
+ * @Date: 2018-12-21 23:11:10 
+ * @Last Modified by: lean
+ * @Last Modified time: 2018-12-21 23:11:31
+ */
+
+ /**
+  * 日志系统
+  */
+
+
 import express from 'express';
 import winston from 'winston';
 import expressWinston from 'express-winston';
@@ -5,12 +17,12 @@ import path from 'path';
 
 const router = express.Router();
 
-let logger = () => {
+let logger = (error) => {
     return expressWinston.logger({
         transports: [
             new winston.transports.Console(),
-            new winston.transports.File({ filename: , level: "info" }),
-            new winston.transports.File({ filename: '../../', level: "error" }),
+            new winston.transports.File({ filename: './info.log', level: "info" }),
+            new winston.transports.File({ filename: './error.log', level: "error" }),
         ],
         fromat: winston.format.combine(
             winston.format.colorize(),
