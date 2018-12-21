@@ -4,7 +4,7 @@
     "dev": "next",
     "build": "next build",
     "dev:m": "cross-env NODE_ENV=development node --experimental-modules server.mjs",
-    "pro:m": "build && cross-env NODE_ENV=production node --experimental-modules server.mjs"
+    "pro:m": "npm run build && cross-env NODE_ENV=production node --experimental-modules server.mjs"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
