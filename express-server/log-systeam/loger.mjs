@@ -2,11 +2,12 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:11:10 
  * @Last Modified by: lean
- * @Last Modified time: 2018-12-21 23:11:31
+ * @Last Modified time: 2018-12-22 00:02:44
  */
 
  /**
-  * 日志系统
+  * 集成Winston日志系统
+  * 
   */
 
 

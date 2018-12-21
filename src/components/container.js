@@ -1,3 +1,15 @@
+/*
+ * @Author: junjie.lean 
+ * @Date: 2018-12-22 00:08:54 
+ * @Last Modified by: lean
+ * @Last Modified time: 2018-12-22 00:10:36
+ */
+
+
+/**
+ * 全局容器组件
+ */
+
 import React, { PureComponent } from 'react';
 import Head from './head';
 import { createStore, applyMiddleware } from 'redux';

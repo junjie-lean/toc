@@ -2,11 +2,11 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:11:46 
  * @Last Modified by: lean
- * @Last Modified time: 2018-12-21 23:49:58
+ * @Last Modified time: 2018-12-22 00:03:47
  */
 
 /**
- * next服务，主要负责服务端渲染的实现
+ * next服务，负责服务端渲染的服务实现
  */
 
 import express from 'express';
