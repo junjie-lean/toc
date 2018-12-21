@@ -2,7 +2,7 @@
 - [主要使用到的技术栈](#%E4%B8%BB%E8%A6%81%E4%BD%BF%E7%94%A8%E5%88%B0%E7%9A%84%E6%8A%80%E6%9C%AF%E6%A0%88)
 - [说明](#%E8%AF%B4%E6%98%8E)
 - [Why Next?](#why-next)
-- [框架介绍](#%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D-1)
+- [原框架github](#%E5%8E%9F%E6%A1%86%E6%9E%B6github)
 - [生产和开发的启动命令](#%08%E7%94%9F%E4%BA%A7%E5%92%8C%E5%BC%80%E5%8F%91%1D%E7%9A%84%E5%90%AF%E5%8A%A8%E5%91%BD%E4%BB%A4)
   - [`npm run dev:m`](#npm-run-devm)
   - [`npm run pro:m`](#npm-run-prom)
@@ -58,7 +58,7 @@ Next轻量化，首屏响应时间只需要30ms左右，同等量级的页面首
 
 使用React语法，Reacter不需要投入过多学习时间，过度平缓。
 
-## 框架介绍
+## 原框架github
 
 [Create-Next-App的Github地址](https://github.com/segmentio/create-next-app);
 
