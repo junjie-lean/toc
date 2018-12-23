@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:11:46 
  * @Last Modified by: lean
- * @Last Modified time: 2018-12-22 00:03:47
+ * @Last Modified time: 2018-12-23 15:40:04
  */
 
 /**
@@ -21,8 +21,8 @@ const port = parseInt(process.env.PORT, 10) || 8081;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({
     dev
-})
-const handle = app.getRequestHandler()
+});
+const handle = app.getRequestHandler();
 
 
 
@@ -40,10 +40,12 @@ let startServer = () => {
             //     default: {
             //     }
             // }
-            return handle(req, res)
+            return handle(req, res);
         });
         server.listen(port, err => {
-            if (err) throw err
+            if (err) {
+                throw err
+            }
             console.log(`> Ready on http://localhost:${port}`)
         });
     })
