@@ -16,7 +16,7 @@
 - [性能监控](#%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7)
 - [接口监控](#%E6%8E%A5%E5%8F%A3%E7%9B%91%E6%8E%A7)
 - [其他](#%E5%85%B6%E4%BB%96)
-- [Thanks for](#thanks-for)
+- [Thanks For](#thanks-for)
 
 ## 架构背景及介绍
 设计此开发架构的初衷是，“在规范前端开发模式的前提下尽量提高页面渲染速度，优化用户体验”。 从现在整个前端圈开发势头来看，基本没有什么公司还在使用常规的“HTML+CSS+JSlib”这种较落后的开发模式进行前端开发，整个前端基本上是NG、Vue、React三分天下。
@@ -38,9 +38,11 @@
  - Next
  - Node.js
  - Express
+  
+*如果有兴趣可以额外了解：*  
  - Winston
  - Moniter
- - SSR相关知识
+ - SSR原理
 
 
 ## 架构相关技术说明
@@ -205,7 +207,7 @@ export default class Page extends React.component{
 ## 其他
   ...
 
-## Thanks for
+## Thanks For
   整个架构包含了优秀的前端开发工程师-甘维添的思想，他指导了我完成了此项任务。在此，感谢他所做的工作。
 
 
