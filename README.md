@@ -7,7 +7,7 @@
   - [`npm run dev:m`](#npm-run-devm)
   - [`npm run pro:m`](#npm-run-prom)
   - [`npm run build`](#npm-run-build)
-  - [outher-cli](#outher-cli)
+  - [other-cli](#other-cli)
 - [styled-jsx的语法支持](#styled-jsx%E7%9A%84%E8%AF%AD%E6%B3%95%E6%94%AF%E6%8C%81)
 - [组件编写方式：](#%E7%BB%84%E4%BB%B6%E7%BC%96%E5%86%99%E6%96%B9%E5%BC%8F)
 - [!!!获取数据的方式](#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E5%BC%8F)
@@ -16,14 +16,15 @@
 - [性能监控](#%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7)
 - [接口监控](#%E6%8E%A5%E5%8F%A3%E7%9B%91%E6%8E%A7)
 - [其他](#%E5%85%B6%E4%BB%96)
+- [Thanks for](#thanks-for)
 
 ## 架构背景及介绍
-设计此开发架构的初衷是，“在规范前端开发模式的前提下尽量提高页面渲染速度，优化用户体验”。 从现在整个前端圈开发势头来看，基本没有什么公司还在使用常规的“HTML+CSS+JSlib”这种较落后的开发模式进行前端开发，整个前端基本上都是NG、Vue、React三分天下。
+设计此开发架构的初衷是，“在规范前端开发模式的前提下尽量提高页面渲染速度，优化用户体验”。 从现在整个前端圈开发势头来看，基本没有什么公司还在使用常规的“HTML+CSS+JSlib”这种较落后的开发模式进行前端开发，整个前端基本上是NG、Vue、React三分天下。
 目前我们公司前端组使用的是基于React的single page application开发模式，即在React框架的基础下，使用其他第三方插件，进行组件式开发，最终打包生成一个HMLT文件、一个CSS文件、一个JS文件和若干媒体文件，这种模式非常利于开发和部署。
 但是这种随着项目业务逻辑越来越复杂，打包出来的单页文件也越来越大，有可能形成5M左右的核心JS文件。
 众所周知，在单页模式下浏览器在下载JS文件的时候，会阻塞页面渲染，在网速慢的情况下可能在输入项目URL后，需要等待几秒（视网速h而定）后才能将这个核心JS文件下载完，才能真正进入项目。
 针对这种情况，目前市面上的解决方案有两种：一是使用JS-chunk模式，将较大的JS文件切割成较小的多个JS文件。这样就能每次请求较小的JS文件，用户也不必等待整个JS大文件下载后才能看到页面。二是使用服务端渲染，在用户请求时候，给用户返回带已有业务数据的HTML文件给浏览器进行渲染，从而降低用户等待时间。
-刚好，NEXT.js即是包含了以上两点特性的一个服务端渲染框架。它简单易用，扩展性高，并且有“create-next-app”这样优秀的脚手架作为初始化模版。于是我在“create-next-app”脚手架的基础下进行了增量配置，从而形成一个高可用、高拓展性的开发架构。
+刚好，Next.js即是包含了以上两点特性的一个服务端渲染框架。它简单易用，扩展性高，并且有“create-next-app”这样优秀的脚手架作为初始化模版。于是我在“create-next-app”脚手架的基础下进行了增量配置，从而形成一个高可用、高拓展性的开发架构。
 
 ## 主要使用到的技术栈
 
@@ -69,7 +70,7 @@ Next是非常轻量化的SSR框架，该项目启动到现在已经有非常多�
   
 Next默认支持JS-Chunk，即客户端每次请求，server端只会返回当前页需要HTML资源，Next会把整个前端项目切割成不同的chunk，实现了请求资源最小化。
 
-Next轻量化，首屏响应时间只需要30ms左右，同等量级的页面首屏响应速度应该在200ms左右。因为响应速度快，也非常适合做web混编APP嵌入。
+Next轻量化，首屏响应时间只需要30ms左右，同等量级的页面首屏响应速度应该在200ms左右。因为响应速度快，也非常适合做web混编APP的页面嵌入。
 
 使用React语法，Reacter不需要投入过多学习时间，过度平缓。
 
@@ -91,14 +92,14 @@ Next轻量化，首屏响应时间只需要30ms左右，同等量级的页面首
 ### `npm run build`
 对项目执行编译，生成程序包。“npm run pro:m”的时候会默认执行一次build操作。
 
-### outher-cli
+### other-cli
 其他命令可在package.json的scripts字段中进行配置。
 
 ## styled-jsx的语法支持
 
 [`styled-jsx`](https://github.com/zeit/styled-jsx) 是一种支持SSR的css语法：
 ```jsx
-export default class Index extends React.Compontn (
+export default class Index extends React.Component (
  render (){
    return (
       <div>
@@ -184,7 +185,7 @@ export default class Page extends React.component{
   - ... 
 
 支持多种操作系统
-  - Windows-Server
+  - Windows
   - Linux
   - ...
 
@@ -203,3 +204,8 @@ export default class Page extends React.component{
 
 ## 其他
   ...
+
+## Thanks for
+  整个架构包含了优秀的前端开发工程师-甘维添的思想，他指导了我完成了此项任务。在此，感谢他所做的工作。
+
+
