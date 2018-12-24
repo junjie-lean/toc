@@ -42,6 +42,7 @@
 *如果有兴趣可以额外了解：*  
  - Winston
  - Moniter
+ - db
  - SSR原理
 
 
@@ -76,9 +77,11 @@ Next轻量化，首屏响应时间只需要30ms左右，同等量级的页面首
 
 使用React语法，Reacter不需要投入过多学习时间，过度平缓。
 
+[学习Next](https://nextjs.org/learn/)
+
 ## 原脚手架说明
 
-[Github地址](https://github.com/segmentio/create-next-app);
+[这是](https://github.com/segmentio/create-next-app)Next的Github地址，如有有问题可在此处给开发者提issues。
 
 ## 生产模式和开发环境下的启动命令
 
