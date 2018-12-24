@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:08:16 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2018-12-24 19:12:41
+ * @Last Modified time: 2018-12-24 19:41:27
  */
 
 /**
@@ -47,10 +47,20 @@ const configuration = {
     },
     /**========================================================================================= */
     /* systeam moniter config */
-    systeamMoniter: {
+    systeamMonitor: {
         // { Boolean : true } 是否启用系统监控系统
         needMonitor: true,
-        
+        // { String : "性能监控" } 
+        pageTitle: "服务器性能监控",
+        // { String : "pathname" }  pathname
+        pagePath: "/performance",
+        // { Boolean : true } 是否启用对应项监控
+        cpu: true,
+        mem: true,
+        load: true,
+        responseTime: true,
+        rps: false,
+        statusCodes: true
     },
     /**========================================================================================= */
     /* api call listen config */

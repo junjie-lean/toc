@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2018-12-24 17:08:57
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2018-12-24 19:10:34
+ * @Last Modified time: 2018-12-24 19:41:14
  */
 
 /**
@@ -15,9 +15,9 @@ import config from './../../config/config';
 
 const router = express.Router();
 let option = {
-    title: "服务器性能监控",
+    title: config.systeamMonitor.pageTitle,
     theme: 'default.css',     // Default styles
-    path: '/performance',
+    path: config.systeamMonitor.pagePath,
     spans: [{
         interval: 1,            // Every second
         retention: 60           // Keep 60 datapoints in memory
@@ -32,13 +32,15 @@ let option = {
         retention: 60
     }],
     chartVisibility: {
-        cpu: true,
-        mem: true,
-        load: true,
-        responseTime: true,
-        rps: true,
-        statusCodes: true
+        cpu: config.systeamMonitor.cpu,
+        mem: config.systeamMonitor.mem,
+        load: config.systeamMonitor.load,
+        responseTime: config.systeamMonitor.responseTime,
+        rps: config.systeamMonitor.rps,
+        statusCodes: config.systeamMonitor.statusCodes
     },
 }
-router.use(expressStatusMonitor(option))
+if (config.systeamMonitor) {
+    router.use(expressStatusMonitor(option))
+}
 export default router
