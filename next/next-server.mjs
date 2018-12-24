@@ -1,8 +1,8 @@
 /*
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:11:46 
- * @Last Modified by: lean
- * @Last Modified time: 2018-12-23 15:40:04
+ * @Last Modified by: junjie.lean
+ * @Last Modified time: 2018-12-24 19:02:58
  */
 
 /**
@@ -12,27 +12,34 @@
 import express from 'express';
 import next from 'next';
 import userRouter from './../express-server/router/user';
-import winston from 'winston';
-import expressWinston from 'express-winston';
 import logger from './../express-server/log-systeam/loger';
+import monitor from './../express-server/monitor/monitor';
+import bodyParser from 'body-parser';
+import config from './../config/config';
 
-const port = parseInt(process.env.PORT, 10) || 8081;
 
-const dev = process.env.NODE_ENV !== 'production';
+// console.log(config);
+const base = config.base;
+const port = base.isDev ? base.devPort : base.proPort;
+const dev = base.isDev;
 const app = next({
     dev
 });
 const handle = app.getRequestHandler();
 
-
-
 let startServer = () => {
     app.prepare().then(() => {
         const server = express();
-        server.use(userRouter);
-        // server.use(logger());
-        // server.use()
+        server.use(bodyParser.json());
+        server.use(bodyParser.urlencoded({ extended: true }));
+
+        //日志中间件
         server.use(logger);
+        //monitor中间件
+        server.use(monitor);
+
+        //业务路由
+        server.use(userRouter);
         server.get('*', (req, res, next) => {
             // switch (pathname) {
             //     case "": {

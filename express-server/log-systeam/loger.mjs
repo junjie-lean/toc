@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:11:10 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2018-12-24 10:49:46
+ * @Last Modified time: 2018-12-24 19:07:42
  */
 
 /**
@@ -16,55 +16,59 @@ import winston from 'winston';
 import expressWinston from 'express-winston';
 import 'winston-daily-rotate-file';
 import path from 'path';
-
-
+import config from './../../config/config';
 const router = express.Router();
 
+let isDev = config.base.isDev;
 
-let isDev = process.env.NODE_ENV == "development";
-let needLoger = true;
-let logFilePrefix = '';
-let needZipLog = true;
-let perLogSize = '20M';
-let maxFilesSize = '10d';
+let needLoger = config.log.needLoger;
+let logFilePrefix = config.log.logFilePrefix;
+let needZipLog = config.log.needZipLog;
+let perLogSize = config.log.perLogSize;
+let maxFilesSize = config.log.maxFilesSize
 let dirname__ = path.join(process.cwd(), 'logs');
+let needTailLog = false;
 
 let infoLog = () => {
+    //router过滤关键词
     let transport = [];//log输出流配置，
     if (isDev) {
         transport.push(
-            // new winston.transports.Console(),
+            // new winston.transports.Console()
         )
     }
-    let ignoreRoute = (req, res) => {
-        // console.log(req.query)
-        // console.log(req[key])
-        // for (let key in req) {
-        //     console.log(key)
-        // }
-        // let { log } = console;
-        // log("ip", req.ip);
-        // log('query', req.query);
-        // log("path", req.path);
-        // log("hostname", req.hostname);
-        // log("ips", req.ips);
-        // log("headers", req.headers);
-        // log("xhr", req.xhr);
+
+    let ignoreRoute = (req, propName) => {
+        let ignoreKeyWords = ['/webpack-hmr', 'ping?page=', '/favicon.ico', '/styles.chunk.css', '/webpack.js', '/styles.js', '/dll/dll'];
+        let ishit = false;
+        for (let keywold in ignoreKeyWords) {
+            if (req.originalUrl.indexOf(keywold) != -1) {
+                ishit = true;
+                break;
+            }
+        }
+        return ishit;
     }
+
     if (needLoger) {
         // let info = new winston.transports.File({ filename: './info.log', level: "info" });
         // let error = new winston.transports.File({ filename: './error.log', level: "error" });
         //需要进行log日志化http请求
         transport.push(
             new (winston.transports.DailyRotateFile)({
-                filename: 'info-%DATE%.log',
+                filename: `${logFilePrefix}-info-%DATE%.log`,
                 dirname: dirname__,
                 datePattern: 'YYYY-MM-DD-HH',
-                zippedArchive: true,
-                maxSize: '10m',
-                maxFiles: '7d'
+                zippedArchive: needZipLog,
+                maxSize: perLogSize,
+                maxFiles: maxFilesSize
             })
         )
+        if (needTailLog) {
+            transport.push(
+                new winston.transports.Console()
+            )
+        }
         return expressWinston.logger({
             transports: [
                 ...transport
@@ -75,10 +79,9 @@ let infoLog = () => {
             ),
             meta: false,
             level: "info",
-            msg: "HTTP {{req.method}} {{req.url}}",
+            msg: "HTTP method:{{req.method}},url:{{req.url}},statusCode:{{res.statusCode}},resTime:{{res.responseTime}}ms",
             expressFormat: true,
-            colorize: true,
-            ignoreRoute: ignoreRoute
+            // ignoreRoute: ignoreRoute,
         })
     } else {
         //不需要进行log日志化http请求
@@ -98,12 +101,12 @@ let errorLog = () => {
     if (needLoger) {
         transport.push(
             new (winston.transports.DailyRotateFile)({
-                filename: 'error-%DATE%.log',
+                filename: `${logFilePrefix}-info-%DATE%.log`,
                 dirname: dirname__,
                 datePattern: 'YYYY-MM-DD-HH',
-                zippedArchive: true,
-                maxSize: '10m',
-                maxFiles: '7d'
+                zippedArchive: needZipLog,
+                maxSize: perLogSize,
+                maxFiles: maxFilesSize
             })
         )
         return expressWinston.errorLogger({
@@ -114,9 +117,9 @@ let errorLog = () => {
                 winston.format.colorize(),
                 winston.format.json()
             ),
-            meta: false,
+            meta: true,
             level: "error",
-            msg: "HTTP {{req.method}} {{req.url}}",
+            msg: "HTTP method:{{req.method}},url:{{req.url}},statusCode:{{res.statusCode}},resTime:{{res.responseTime}}ms",
             expressFormat: true,
         })
     } else {
@@ -126,8 +129,10 @@ let errorLog = () => {
         })
     }
 }
+
 router.use(infoLog());
 router.use(errorLog());
+
 router.post('*', (req, res, next) => {
     return res.json({
         result: true
