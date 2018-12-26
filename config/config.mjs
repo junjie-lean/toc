@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:08:16 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2018-12-24 19:41:27
+ * @Last Modified time: 2018-12-25 10:36:09
  */
 
 /**
@@ -15,6 +15,13 @@
 const configuration = {
     /* base config */
     base: {
+        /**
+         * warning：
+         * 此对象仅能做基础配置，
+         * 因为此配置将暴露给前端，
+         * 所以不可在此对象内配只服务内部配置；
+         * warning end;
+        */
         // { Boolean : * } 当前运行环境是否是开发环境
         isDev: process.env.NODE_ENV == 'development',
         // { Number : 3000 } 开发环境服务端口
@@ -40,9 +47,10 @@ const configuration = {
         perLogSize: '20M',
         // { String : "7d" } 需要保存最近几天的日志文件，超期将会被删除，单位（天）
         maxFilesSize: '7d',
-        // { Boolean : false } 是否启用滚屏显示http请求
-        needTailLog: false,
-
+        // { Boolean : true } 是否启用滚屏显示http请求,仅dev模式有效
+        needTailLog: true,
+        // { Boolean : false } 是否需要初始化清除log,仅dev模式有效
+        needInitCleanLog: true
 
     },
     /**========================================================================================= */
@@ -68,6 +76,8 @@ const configuration = {
         // { Boolean : true } 是否启用接口转发模式
         ajaxTransform: true,
     }
+    /**========================================================================================= */
+
 }
 
 export default configuration
