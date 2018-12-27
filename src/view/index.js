@@ -1,8 +1,8 @@
 /*
  * @Author: junjie.lean
  * @Date: 2018-12-22 00:08:05
- * @Last Modified by: lean
- * @Last Modified time: 2018-12-22 00:11:32
+ * @Last Modified by: junjie.lean
+ * @Last Modified time: 2018-12-26 19:37:47
  */
 
 /**
@@ -15,12 +15,13 @@ import Container from '../components/container';
 import Router from 'next/router';
 import { Button } from 'antd';
 
+
 export default class Index extends React.Component {
   constructor(props) {
     super(props)
   }
-  clickHandle() { 
-      Router.push('/lean');
+  clickHandle() {
+    Router.push('/lean');
   }
   render() {
     let props = this.props;
@@ -28,15 +29,18 @@ export default class Index extends React.Component {
       <Container>
         <div>
           <div className="hero">
-            <h1 className="title">Welcome to framework!</h1>
+            <h1 className="title">Welcome to {props.falseworkName}!</h1>
             <p className="description">
-              To get started, edit <code>pages/index.js</code> and save to reload.
-           </p>
+              {/* To get started, edit <code>pages/index.js</code> and save to reload. */}
+            </p>
             <Button onClick={this.clickHandle.bind(this)}>事件方式触发跳转</Button>
             <br />
             <Link href="./lean" as="frameWork">
               <Button>Link方式触发跳转</Button>
             </Link>
+            <br />
+            {/* <img src={CSR} /> */}
+            <img src='/static/pic/csr.png' />
           </div>
           <style jsx>{`
       .hero {

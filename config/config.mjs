@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:08:16 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2018-12-25 10:36:09
+ * @Last Modified time: 2018-12-26 16:58:02
  */
 
 /**
@@ -18,14 +18,14 @@ const configuration = {
         /**
          * warning：
          * 此对象仅能做基础配置，
-         * 因为此配置将暴露给前端，
-         * 所以不可在此对象内配只服务内部配置；
+         * 此配置将暴露给前端，
+         * 不可在此对象内填写服务器相关配置；
          * warning end;
         */
         // { Boolean : * } 当前运行环境是否是开发环境
         isDev: process.env.NODE_ENV == 'development',
         // { Number : 3000 } 开发环境服务端口
-        devPort: 3000,
+        devPort: 8090,
         // { Number : 8080 } 生产环境服务端口,短端口可另外配Nginx做端口代理
         proProt: 8080,
         // { String : "URL" } 中间层接口地址
@@ -48,7 +48,7 @@ const configuration = {
         // { String : "7d" } 需要保存最近几天的日志文件，超期将会被删除，单位（天）
         maxFilesSize: '7d',
         // { Boolean : true } 是否启用滚屏显示http请求,仅dev模式有效
-        needTailLog: true,
+        needTailLog: false,
         // { Boolean : false } 是否需要初始化清除log,仅dev模式有效
         needInitCleanLog: true
 
