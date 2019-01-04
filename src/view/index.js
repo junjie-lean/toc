@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2018-12-22 00:08:05
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-04 10:51:53
+ * @Last Modified time: 2019-01-04 16:45:40
  */
 
 /**
@@ -15,7 +15,9 @@ import Container from '../components/container';
 import Router from 'next/router';
 import { Button } from 'antd';
 import Lifecycle from './../components/Lifecycle';
-import indexScss from './../scss/index.scss';
+
+
+// import indexScss from './../scss/index.scss';
 
 export default class Index extends React.Component {
   constructor(props) {
@@ -55,7 +57,56 @@ export default class Index extends React.Component {
             {/* <img src='/static/pic/csr.png' /> */}
             <Lifecycle name={this.state.name} />
           </div>
-          <style jsx>{indexScss}</style>
+          {/* <style jsx>{indexScss}</style> */}
+          <style jsx>{`.hero {
+    width: 100%;
+    color: #333;
+}
+
+.title {
+    margin: 0;
+    width: 100%;
+    padding-top: 80px;
+    line-height: 1.15;
+    font-size: 48px;
+}
+
+.title,
+.description {
+    text-align: center;
+}
+
+.row {
+    max-width: 880px;
+    margin: 80px auto 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.card {
+    padding: 18px 18px 24px;
+    width: 220px;
+    text-align: left;
+    text-decoration: none;
+    color: #434343;
+    border: 1px solid #9b9b9b;
+    :hover {
+        border-color: #067df7;
+    }
+    h3 {
+        margin: 0;
+        color: #067df7;
+        font-size: 18px;
+    }
+    p {
+        margin: 0;
+        padding: 12px 0 0;
+        font-size: 13px;
+        color: #333;
+    }
+}`}</style>
+
         </div>
       </Container>
     )

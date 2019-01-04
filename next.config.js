@@ -30,19 +30,6 @@ module.exports = withCss({
             },
           }
         ]
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          defaultLoaders.babel,
-          {
-            loader: require('styled-jsx/webpack').loader,
-            options: {
-              type: 'scoped'
-            }
-          },
-          'sass-loader'
-        ]
       }
     )
     // config.output.path = `${__dirname}/.lean`
