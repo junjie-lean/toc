@@ -13,7 +13,7 @@ if (typeof require !== 'undefined') {
   require.extensions['.css'] = (file) => { }
 }
 module.exports = withCss({
-  webpack: (config) => {
+  webpack: (config, { defaultLoaders }) => {
     config.module.rules.push(
       {
         test: /\.(swf|ttf|eot|svg|woff(2))(\?[a-z0-9]+)?$/,
@@ -25,10 +25,23 @@ module.exports = withCss({
           {
             loader: 'url-loader',
             options: {
-              limit: 10000,//k
+              limit: 10000,//kb
               name: '/[name].[ext]',
             },
           }
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          defaultLoaders.babel,
+          {
+            loader: require('styled-jsx/webpack').loader,
+            options: {
+              type: 'scoped'
+            }
+          },
+          'sass-loader'
         ]
       }
     )

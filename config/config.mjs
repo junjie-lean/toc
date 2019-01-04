@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:08:16 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2018-12-26 16:58:02
+ * @Last Modified time: 2019-01-04 15:22:21
  */
 
 /**
@@ -25,17 +25,16 @@ const configuration = {
         // { Boolean : * } 当前运行环境是否是开发环境
         isDev: process.env.NODE_ENV == 'development',
         // { Number : 3000 } 开发环境服务端口
-        devPort: 8090,
+        devPort: 3000,
         // { Number : 8080 } 生产环境服务端口,短端口可另外配Nginx做端口代理
-        proProt: 8080,
+        proPort: 8080,
         // { String : "URL" } 中间层接口地址
         virtualServiceURL: 'http://localhost:3000/ajaxTrans/api',
         // { Boolean : false } 是否需要多线程模式启动项目，默认false关闭，开启后可使用多线程模式启动项目，在多核CPU下可显著支持并发数。开发模式不建议启用，windows不支持。
         isCluster: false,
     },
     /**========================================================================================= */
-    /* http loger config */
-    //格式 日志级别 日志地址 日志打包逻辑等
+     //格式 日志级别 日志地址 日志打包逻辑等
     log: {
         // { Boolean : true } 是否启用日志系统
         needLoger: true,

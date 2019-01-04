@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2018-12-22 00:08:05
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2018-12-26 19:37:47
+ * @Last Modified time: 2019-01-04 10:51:53
  */
 
 /**
@@ -14,14 +14,26 @@ import Link from 'next/link';
 import Container from '../components/container';
 import Router from 'next/router';
 import { Button } from 'antd';
-
+import Lifecycle from './../components/Lifecycle';
+import indexScss from './../scss/index.scss';
 
 export default class Index extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.state = {
+      ...props,
+      name: 1
+    }
   }
+
   clickHandle() {
     Router.push('/lean');
+  }
+
+  addOne = () => {
+    this.setState({
+      name: this.state.name + 1
+    })
   }
   render() {
     let props = this.props;
@@ -29,65 +41,21 @@ export default class Index extends React.Component {
       <Container>
         <div>
           <div className="hero">
-            <h1 className="title">Welcome to {props.falseworkName}!</h1>
+            <h1 className="title" onClick={this.addOne}>Welcome to {props.falseworkName}!</h1>
             <p className="description">
               {/* To get started, edit <code>pages/index.js</code> and save to reload. */}
             </p>
-            <Button onClick={this.clickHandle.bind(this)}>事件方式触发跳转</Button>
+            {/* <Button onClick={this.clickHandle.bind(this)}>事件方式触发跳转</Button>
             <br />
             <Link href="./lean" as="frameWork">
               <Button>Link方式触发跳转</Button>
-            </Link>
+            </Link> */}
             <br />
             {/* <img src={CSR} /> */}
-            <img src='/static/pic/csr.png' />
+            {/* <img src='/static/pic/csr.png' /> */}
+            <Lifecycle name={this.state.name} />
           </div>
-          <style jsx>{`
-      .hero {
-        width: 100%;
-        color: #333;
-      }
-      .title {
-        margin: 0;
-        width: 100%;
-        padding-top: 80px;
-        line-height: 1.15;
-        font-size: 48px;
-      }
-      .title,
-      .description {
-        text-align: center;
-      }
-      .row {
-        max-width: 880px;
-        margin: 80px auto 40px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-      }
-      .card {
-        padding: 18px 18px 24px;
-        width: 220px;
-        text-align: left;
-        text-decoration: none;
-        color: #434343;
-        border: 1px solid #9b9b9b;
-      }
-      .card:hover {
-        border-color: #067df7;
-      }
-      .card h3 {
-        margin: 0;
-        color: #067df7;
-        font-size: 18px;
-      }
-      .card p {
-        margin: 0;
-        padding: 12px 0 0;
-        font-size: 13px;
-        color: #333;
-      }
-    `}</style>
+          <style jsx>{indexScss}</style>
         </div>
       </Container>
     )
