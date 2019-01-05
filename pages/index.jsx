@@ -1,8 +1,8 @@
 /*
  * @Author: junjie.lean 
  * @Date: 2018-12-22 00:05:25 
- * @Last Modified by: junjie.lean
- * @Last Modified time: 2018-12-26 18:30:43
+ * @Last Modified by: lean
+ * @Last Modified time: 2019-01-06 01:54:49
  */
 
 /**
@@ -24,7 +24,9 @@ export default class IndexPage extends React.Component {
 
   render() {
     return (
-      <Index {...this.props} falseworkName='falsework of SSR' />
+      <div>
+        <Index {...this.props} falseworkName='falsework of SSR' />
+      </div>
     )
   }
 }

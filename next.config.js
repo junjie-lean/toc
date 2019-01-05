@@ -1,18 +1,8 @@
 /* eslint-disable */
-// const withCss = require('@zeit/next-css');
-
-// if (typeof require !== 'undefined') {
-//   require.extensions['.css'] = file => {}
-// }
-
-// module.exports = withCss()
-
 const withCss = require('@zeit/next-css');
+const withSass = require('@zeit/next-sass');
 
-if (typeof require !== 'undefined') {
-  require.extensions['.css'] = (file) => { }
-}
-module.exports = withCss({
+module.exports = withSass({
   webpack: (config, { defaultLoaders }) => {
     config.module.rules.push(
       {
@@ -30,9 +20,29 @@ module.exports = withCss({
             },
           }
         ]
-      }
+      },
     )
     // config.output.path = `${__dirname}/.lean`
     return config
   }
 });
+
+// module.exports = {
+//   webpack: (config, { defaultLoaders }) => {
+//     config.module.rules.push({
+//       test: /\.scss$/,
+//       use: [
+//         defaultLoaders.babel,
+//         {
+//           loader: require('styled-jsx/webpack').loader,
+//           options: {
+//             type: 'scoped'
+//           }
+//         },
+//         'sass-loader'
+//       ]
+//     })
+
+//     return config
+//   }
+// }

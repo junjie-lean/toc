@@ -1,6 +1,7 @@
 .hero {
     width: 100%;
     color: #333;
+    user-select: none;
 }
 
 .title {
@@ -9,6 +10,9 @@
     padding-top: 80px;
     line-height: 1.15;
     font-size: 48px;
+    &:hover{
+        color:red
+    }
 }
 
 .title,
