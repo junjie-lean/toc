@@ -1,8 +1,8 @@
 /*
  * @Author: junjie.lean
  * @Date: 2018-12-22 00:08:05
- * @Last Modified by: lean
- * @Last Modified time: 2018-12-22 00:11:32
+ * @Last Modified by: junjie.lean
+ * @Last Modified time: 2018-12-28 12:28:53
  */
 
 /**
@@ -17,7 +17,7 @@ export default class Lean extends React.Component {
         return (
             <Container>
                 <div>
-                    框架搭建
+                   客户端组件级页面
                 </div>
             </Container>
         )

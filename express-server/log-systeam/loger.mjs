@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:11:10 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2018-12-24 19:07:42
+ * @Last Modified time: 2018-12-26 13:03:00
  */
 
 /**
@@ -27,14 +27,14 @@ let needZipLog = config.log.needZipLog;
 let perLogSize = config.log.perLogSize;
 let maxFilesSize = config.log.maxFilesSize
 let dirname__ = path.join(process.cwd(), 'logs');
-let needTailLog = false;
+let needTailLog = config.log.needTailLog;
 
 let infoLog = () => {
     //router过滤关键词
     let transport = [];//log输出流配置，
-    if (isDev) {
+    if (isDev && needTailLog) {
         transport.push(
-            // new winston.transports.Console()
+            new winston.transports.Console()
         )
     }
 
@@ -54,6 +54,7 @@ let infoLog = () => {
         // let info = new winston.transports.File({ filename: './info.log', level: "info" });
         // let error = new winston.transports.File({ filename: './error.log', level: "error" });
         //需要进行log日志化http请求
+        // console.log(0);
         transport.push(
             new (winston.transports.DailyRotateFile)({
                 filename: `${logFilePrefix}-info-%DATE%.log`,
@@ -64,11 +65,6 @@ let infoLog = () => {
                 maxFiles: maxFilesSize
             })
         )
-        if (needTailLog) {
-            transport.push(
-                new winston.transports.Console()
-            )
-        }
         return expressWinston.logger({
             transports: [
                 ...transport
