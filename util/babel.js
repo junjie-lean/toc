@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2019-01-07 21:46:14 
  * @Last Modified by: lean
- * @Last Modified time: 2019-01-07 22:55:39
+ * @Last Modified time: 2019-01-07 23:10:58
  */
 
 /**
@@ -18,7 +18,7 @@ let cwd = process.cwd(); // ==> out path
 
 
 let babelFileFun = (filepath) => {
-    if (!filepath && path.isAbsolute(filepath)) {
+    if (!filepath || !path.isAbsolute(filepath) || path.extname(filepath) == ".js") {
         return false
     }
     let item = path.basename(filepath)
@@ -51,7 +51,7 @@ dirList.filter((item) => {
     // console.log(item)
     fs.stat(path.join(cwd, item), (err, stats) => {
         if (stats.isDirectory()) {
-            let thisPath = path.join(cwd, item);
+            loop(path.join(cwd, item))
             function loop(_path) {
                 let o = fs.statSync(_path)
                 if (o.isDirectory()) {
@@ -63,10 +63,12 @@ dirList.filter((item) => {
                 } else {
                     // console.log(_path)
                     // console.log(path.basename(_path))
-                    babelFileFun(_path);
+                    if (path.extname(_path) == '.mjs') {
+                        babelFileFun(_path);
+                    }
                 }
             }
-            loop(thisPath)
+           
         } else {
             babelFileFun(path.join(cwd, item))
         }
