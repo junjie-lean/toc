@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:08:16 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-08 16:14:56
+ * @Last Modified time: 2019-01-08 16:22:59
  */
 
 /**
@@ -12,7 +12,7 @@
  * Warning : 如果不清楚此文件所描述的具体意义项，请勿随意更改配置。
  */
 
-const configuration = {
+module.exports = {
     /* base config */
     base: {
         /**
@@ -34,7 +34,7 @@ const configuration = {
         isCluster: false,
     },
     /**========================================================================================= */
-     //格式 日志级别 日志地址 日志打包逻辑等
+    //格式 日志级别 日志地址 日志打包逻辑等
     log: {
         // { Boolean : true } 是否启用日志系统
         needLoger: true,
@@ -79,5 +79,3 @@ const configuration = {
 
 }
 
-// export default configuration
-exports.default = configuration;
