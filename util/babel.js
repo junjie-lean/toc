@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2019-01-07 21:46:14 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-08 10:50:22
+ * @Last Modified time: 2019-01-08 11:01:33
  */
 
 /**
@@ -41,7 +41,11 @@ let babelFileFun = (filepath) => {
             console.log(code)
         } else {
             if (needDelete) {
-                // fs.unlink(filepath)
+                fs.unlink(filepath, (err) => {
+                    if (err) {
+                        console.log(err)
+                    }
+                })
                 // console.log('delete file:', path.basename(filepath))
             }
         }
