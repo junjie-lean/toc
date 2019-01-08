@@ -1,11 +1,11 @@
 {
   "name": "falsework-with-next7",
   "scripts": {
-    "build": "next build",
+    "dev": "cross-env NODE_ENV=development node  server.js",
     "babel": "cross-env NODE_ENV=development node util/babel.js",
     "dev:m": "cross-env NODE_ENV=development node --experimental-modules server.mjs",
-    "dev": "cross-env NODE_ENV=development node --experimental-modules server.mjs",
-    "pro:m": "npm run build && cross-env NODE_ENV=production node --experimental-modules --no-warnings server.mjs"
+    "pro:m": "npm run build && cross-env NODE_ENV=production node --experimental-modules --no-warnings server.mjs",
+    "build": "next build"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
@@ -47,13 +47,16 @@
           "libraryName": "antd",
           "style": "css"
         }
-      ]
-    ]
+      ],
+      "transform-es2015-modules-commonjs"
+    ],
+    "comments": false
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
-    "bufferhelper": "^0.2.1"
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-preset-minify": "^0.5.0"
   },
   "author": {
     "name": "lean",

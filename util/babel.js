@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2019-01-07 21:46:14 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-08 16:05:46
+ * @Last Modified time: 2019-01-08 16:15:22
  */
 
 /**
@@ -41,13 +41,13 @@ let babelFileFun = (filepath) => {
             console.log(code)
         } else {
             if (needDelete) {
-                fs.unlink(filepath, (err) => {
-                    if (err) {
-                        console.log(err)
-                    }
-                    console.log('Delete the file:', path.basename(filepath))
-                })
-
+                // fs.unlink(filepath, (err) => {
+                //     if (err) {
+                //         console.log(err)
+                //     }
+                //     console.log('Delete the file:', path.basename(filepath))
+                // })
+                console.log(chalk.red('暂不支持删除操作！'))
             }
         }
 

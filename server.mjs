@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 09:25:32 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2018-12-26 16:16:25
+ * @Last Modified time: 2019-01-08 14:54:33
  */
 
 
@@ -13,7 +13,7 @@
 
 import cluster from 'cluster';
 import os from 'os';
-import startServer from './next/next-server.mjs';
+import startServer from './next/next-server';
 // import fs from 'fs';
 // import path from 'path';
 import config from './config/config';
