@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:08:16 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-07 18:44:20
+ * @Last Modified time: 2019-01-08 16:05:02
  */
 
 /**
@@ -79,4 +79,5 @@ const configuration = {
 
 }
 
-export default configuration
+// export default configuration
+exports.default = configuration;

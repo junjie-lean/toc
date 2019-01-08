@@ -34,17 +34,6 @@ var _config2 = _interopRequireDefault(_config);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/*
- * @Author: junjie.lean 
- * @Date: 2018-12-21 23:11:46 
- * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-04 11:16:06
- */
-
-/**
- * next服务，负责服务端渲染的服务实现
- */
-// console.log(config);
 var base = _config2.default.base;
 var port = base.isDev ? base.devPort : base.proPort;
 var dev = base.isDev;
@@ -59,20 +48,11 @@ var startServer = function startServer() {
     server.use(_bodyParser2.default.json());
     server.use(_bodyParser2.default.urlencoded({
       extended: true
-    })); //日志中间件
-
-    server.use(_loger2.default); //monitor中间件
-
-    server.use(_monitor2.default); //业务路由
-
+    }));
+    server.use(_loger2.default);
+    server.use(_monitor2.default);
     server.use(_user2.default);
     server.get('*', function (req, res, next) {
-      // switch (pathname) {
-      //     case "": {
-      //     }
-      //     default: {
-      //     }
-      // }
       return handle(req, res);
     });
     server.listen(port, function (err) {
