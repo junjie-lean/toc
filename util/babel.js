@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2019-01-07 21:46:14 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-08 13:12:31
+ * @Last Modified time: 2019-01-08 13:15:06
  */
 
 /**
@@ -45,8 +45,9 @@ let babelFileFun = (filepath) => {
                     if (err) {
                         console.log(err)
                     }
+                    console.log('Delete the file:', path.basename(filepath))
                 })
-                // console.log('delete file:', path.basename(filepath))
+
             }
         }
 
