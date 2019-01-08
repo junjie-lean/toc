@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:08:16 
  * @Last Modified by: lean
- * @Last Modified time: 2019-01-09 00:02:07
+ * @Last Modified time: 2019-01-09 00:22:30
  */
 
 /**
@@ -11,6 +11,8 @@
  * @description 更改此文件时，需要重启系统使配置生效；
  * @Warning Warning : 如果不清楚此文件所描述的具体意义项，请勿随意更改配置。
  */
+const fs = require('fs');
+const path = require('path');
 
 module.exports = {
     /* base config */
@@ -31,7 +33,7 @@ module.exports = {
         // { String : "URL" } 中间层接口地址，默认本服务
         virtualServiceURL: 'http://localhost:3000/',
         // { String : "URL" } 后端接口地址
-        trueServiceURL : 'http://localhost:8080',
+        trueServiceURL: 'http://localhost:8080',
         // { Boolean : false } 是否需要多线程模式启动项目，默认false关闭，开启后可使用多线程模式启动项目，在多核CPU下可显著支持并发数。开发模式不建议启用，windows不支持。
         isCluster: false,
     },
@@ -76,8 +78,33 @@ module.exports = {
     apiListen: {
         // { Boolean : true } 是否启用接口转发模式
         ajaxTransform: true,
-    }
+    },
     /**========================================================================================= */
+    /* create G.js */
+    createGlobalFile: (pr) => {
+        console.log(pr);
 
+        let data = ` 
+/*
+* @Author: junjie.lean
+* @Date: 2018-12-22 00:08:05
+* @Last Modified by: lean
+* @Last Modified time: 2019-01-08 22:14:23
+*/
+
+/**
+* @description 针对前端的全局临时变量,此文件动态生成，
+* @description 对此文件的修改重启后会被覆盖，
+* @description 可修改"./../../config/config.js"的base属性
+*/
+
+let data=${JSON.stringify(pr)};
+
+export const G = JSON.parse(data);
+
+window.G = G;
+        `;
+        fs.writeFileSync(path.join(process.cwd(), 'src', 'js', 'g.js'), data, { encoding: 'utf8', flag: 'w+' })
+    }
 }
 
