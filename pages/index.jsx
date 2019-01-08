@@ -19,6 +19,7 @@ const { fetchData } = request;
 export default class IndexPage extends React.Component {
   static async getInitialProps({ req }) {
     let data = await fetchData('/systeam/module/get', { isServer: req ? true : false }, req);
+    
     return { '/get': data }
   }
   constructor(props) {
