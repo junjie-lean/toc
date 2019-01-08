@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development node  server.js",
     "babel": "cross-env NODE_ENV=development node util/babel.js",
-    "dev:m": "cross-env NODE_ENV=development node --experimental-modules server.mjs",
+    "dev:m": "cls && cross-env NODE_ENV=development node --experimental-modules server.mjs",
     "pro:m": "npm run build && cross-env NODE_ENV=production node --experimental-modules --no-warnings server.mjs",
     "build": "next build"
   },

@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:08:16 
  * @Last Modified by: lean
- * @Last Modified time: 2019-01-08 22:23:43
+ * @Last Modified time: 2019-01-09 00:02:07
  */
 
 /**
@@ -50,7 +50,7 @@ module.exports = {
         maxFilesSize: '7d',
         // { Boolean : true } 是否启用滚屏显示http请求,仅dev模式有效
         needTailLog: false,
-        // { Boolean : false } 是否需要初始化清除log,仅dev模式有效
+        // { Boolean : false } 是否需要初始化清除一小时以前创建的log,仅dev模式有效
         needInitCleanLog: true
 
     },

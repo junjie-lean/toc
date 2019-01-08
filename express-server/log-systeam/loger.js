@@ -22,15 +22,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var router = _express.default.Router();
 
 var isDev = _config.default.base.isDev;
-var needLoger = _config.default.logneedLoger;
-var logFilePrefix = _config.default.loglogFilePrefix;
-var needZipLog = _config.default.logneedZipLog;
-var perLogSize = _config.default.logperLogSize;
-var maxFilesSize = _config.default.logmaxFilesSize;
+var needLoger = _config.default.log.needLoger;
+var logFilePrefix = _config.default.log.logFilePrefix;
+var needZipLog = _config.default.log.needZipLog;
+var perLogSize = _config.default.log.perLogSize;
+var maxFilesSize = _config.default.log.maxFilesSize;
 
 var dirname__ = _path.default.join(process.cwd(), 'logs');
 
-var needTailLog = _config.default.logneedTailLog;
+var needTailLog = _config.default.log.needTailLog;
 
 var infoLog = function infoLog() {
   var transport = [];
@@ -110,10 +110,5 @@ var errorLog = function errorLog() {
 
 router.use(infoLog());
 router.use(errorLog());
-router.post('*', function (req, res, next) {
-  return res.json({
-    result: true
-  });
-});
 var _default = router;
 exports.default = _default;
