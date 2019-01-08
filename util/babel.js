@@ -1,8 +1,8 @@
 /*
  * @Author: junjie.lean 
  * @Date: 2019-01-07 21:46:14 
- * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-08 16:15:22
+ * @Last Modified by: lean
+ * @Last Modified time: 2019-01-08 22:02:43
  */
 
 /**
@@ -23,7 +23,11 @@ let babelFileFun = (filepath) => {
         return false
     }
     let item = path.basename(filepath)
-    let arr = ['babel', filepath,
+    let arr = [
+        'babel',
+        '--plugins',
+        '@babel/plugin-transform-modules-commonjs',
+        filepath,
         '-o',
         path.join(path.dirname(filepath), path.basename(item, '.mjs') + '.js')]
 
@@ -114,5 +118,6 @@ let babel = () => {
 (async () => {
     await confirm();
     await babel();
+    console.log(chalk.green("babel compile success..."))
 })()
 

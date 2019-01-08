@@ -1,8 +1,8 @@
 /*
  * @Author: junjie.lean 
  * @Date: 2018-12-22 00:05:25 
- * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-07 19:11:38
+ * @Last Modified by: lean
+ * @Last Modified time: 2019-01-08 22:05:53
  */
 
 /**
@@ -18,8 +18,9 @@ const { fetchData } = request;
 
 export default class IndexPage extends React.Component {
   static async getInitialProps({ req }) {
-    let data = await fetchData('/systeam/module/get', { isServer: req ? true : false }, req);
-    return { '/get': data }
+    // let data = await fetchData('/systeam/module/get', { isServer: req ? true : false }, req);
+    // return { '/get': data }
+    return {}
   }
   constructor(props) {
     super(props)

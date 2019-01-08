@@ -3,49 +3,40 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _express = require("express");
+var _express = _interopRequireDefault(require("express"));
 
-var _express2 = _interopRequireDefault(_express);
+var _winston = _interopRequireDefault(require("winston"));
 
-var _winston = require("winston");
-
-var _winston2 = _interopRequireDefault(_winston);
-
-var _expressWinston = require("express-winston");
-
-var _expressWinston2 = _interopRequireDefault(_expressWinston);
+var _expressWinston = _interopRequireDefault(require("express-winston"));
 
 require("winston-daily-rotate-file");
 
-var _path = require("path");
+var _path = _interopRequireDefault(require("path"));
 
-var _path2 = _interopRequireDefault(_path);
-
-var _config = require("./../../config/config");
-
-var _config2 = _interopRequireDefault(_config);
+var _config = _interopRequireDefault(require("./../../config/config"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var router = _express2.default.Router();
+var router = _express.default.Router();
 
-var isDev = _config2.default.base.isDev;
-var needLoger = _config2.default.log.needLoger;
-var logFilePrefix = _config2.default.log.logFilePrefix;
-var needZipLog = _config2.default.log.needZipLog;
-var perLogSize = _config2.default.log.perLogSize;
-var maxFilesSize = _config2.default.log.maxFilesSize;
+var isDev = _config.default.base.isDev;
+var needLoger = _config.default.logneedLoger;
+var logFilePrefix = _config.default.loglogFilePrefix;
+var needZipLog = _config.default.logneedZipLog;
+var perLogSize = _config.default.logperLogSize;
+var maxFilesSize = _config.default.logmaxFilesSize;
 
-var dirname__ = _path2.default.join(process.cwd(), 'logs');
+var dirname__ = _path.default.join(process.cwd(), 'logs');
 
-var needTailLog = _config2.default.log.needTailLog;
+var needTailLog = _config.default.logneedTailLog;
 
 var infoLog = function infoLog() {
   var transport = [];
 
   if (isDev && needTailLog) {
-    transport.push(new _winston2.default.transports.Console());
+    transport.push(new _winston.default.transports.Console());
   }
 
   var ignoreRoute = function ignoreRoute(req, propName) {
@@ -63,7 +54,7 @@ var infoLog = function infoLog() {
   };
 
   if (needLoger) {
-    transport.push(new _winston2.default.transports.DailyRotateFile({
+    transport.push(new _winston.default.transports.DailyRotateFile({
       filename: "".concat(logFilePrefix, "-info-%DATE%.log"),
       dirname: dirname__,
       datePattern: 'YYYY-MM-DD-HH',
@@ -71,16 +62,16 @@ var infoLog = function infoLog() {
       maxSize: perLogSize,
       maxFiles: maxFilesSize
     }));
-    return _expressWinston2.default.logger({
+    return _expressWinston.default.logger({
       transports: [].concat(transport),
-      fromat: _winston2.default.format.combine(_winston2.default.format.colorize(), _winston2.default.format.json()),
+      fromat: _winston.default.format.combine(_winston.default.format.colorize(), _winston.default.format.json()),
       meta: false,
       level: "info",
       msg: "HTTP method:{{req.method}},url:{{req.url}},statusCode:{{res.statusCode}},resTime:{{res.responseTime}}ms",
       expressFormat: true
     });
   } else {
-    return _expressWinston2.default.logger({
+    return _expressWinston.default.logger({
       slient: true
     });
   }
@@ -90,11 +81,11 @@ var errorLog = function errorLog() {
   var transport = [];
 
   if (isDev) {
-    transport.push(new _winston2.default.transports.Console());
+    transport.push(new _winston.default.transports.Console());
   }
 
   if (needLoger) {
-    transport.push(new _winston2.default.transports.DailyRotateFile({
+    transport.push(new _winston.default.transports.DailyRotateFile({
       filename: "".concat(logFilePrefix, "-info-%DATE%.log"),
       dirname: dirname__,
       datePattern: 'YYYY-MM-DD-HH',
@@ -102,16 +93,16 @@ var errorLog = function errorLog() {
       maxSize: perLogSize,
       maxFiles: maxFilesSize
     }));
-    return _expressWinston2.default.errorLogger({
+    return _expressWinston.default.errorLogger({
       transports: [].concat(transport),
-      fromat: _winston2.default.format.combine(_winston2.default.format.colorize(), _winston2.default.format.json()),
+      fromat: _winston.default.format.combine(_winston.default.format.colorize(), _winston.default.format.json()),
       meta: true,
       level: "error",
       msg: "HTTP method:{{req.method}},url:{{req.url}},statusCode:{{res.statusCode}},resTime:{{res.responseTime}}ms",
       expressFormat: true
     });
   } else {
-    return _expressWinston2.default.logger({
+    return _expressWinston.default.logger({
       slient: true
     });
   }
@@ -124,4 +115,5 @@ router.post('*', function (req, res, next) {
     result: true
   });
 });
-exports.default = router;
+var _default = router;
+exports.default = _default;

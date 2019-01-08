@@ -1,12 +1,12 @@
 /*
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:11:10 
- * @Last Modified by: junjie.lean
- * @Last Modified time: 2018-12-26 13:03:00
+ * @Last Modified by: lean
+ * @Last Modified time: 2019-01-08 22:31:37
  */
 
 /**
- * 集成Winston日志系统
+ * @description Winston日志系统集成
  * 
  */
 
@@ -21,13 +21,13 @@ const router = express.Router();
 
 let isDev = config.base.isDev;
 
-let needLoger = config.log.needLoger;
-let logFilePrefix = config.log.logFilePrefix;
-let needZipLog = config.log.needZipLog;
-let perLogSize = config.log.perLogSize;
-let maxFilesSize = config.log.maxFilesSize
+let needLoger =  config.logneedLoger;
+let logFilePrefix =  config.loglogFilePrefix;
+let needZipLog =  config.logneedZipLog;
+let perLogSize =  config.logperLogSize;
+let maxFilesSize =  config.logmaxFilesSize
 let dirname__ = path.join(process.cwd(), 'logs');
-let needTailLog = config.log.needTailLog;
+let needTailLog =  config.logneedTailLog;
 
 let infoLog = () => {
     //router过滤关键词

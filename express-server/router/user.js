@@ -3,10 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _express = require("express");
-
-var _express2 = _interopRequireDefault(_express);
+var _express = _interopRequireDefault(require("express"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -14,7 +13,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var router = _express2.default.Router();
+var router = _express.default.Router();
 
 router.get('/name/:name', function (req, res) {
   console.log('query', req.query);
@@ -28,10 +27,11 @@ router.all('*', function (req, res, next) {
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   next();
 });
-router.post('/systeam/module/get', function (req, res) {
+router.post('/a', function (req, res) {
   res.json({
     result: true,
     data: _objectSpread({}, process.env)
   });
 });
-exports.default = router;
+var _default = router;
+exports.default = _default;

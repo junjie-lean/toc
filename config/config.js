@@ -1,22 +1,22 @@
 /*
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:08:16 
- * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-08 16:22:59
+ * @Last Modified by: lean
+ * @Last Modified time: 2019-01-08 22:23:43
  */
 
 /**
- * 配置信息集合：
- * 介绍：configuration对象包含了基础配置/http日志配置/系统监控配置/请求接口监听配置；
- * 更改此文件时，需要重启系统使配置生效；
- * Warning : 如果不清楚此文件所描述的具体意义项，请勿随意更改配置。
+ * @description 配置信息集合：
+ * @description 介绍：configuration对象包含了基础配置/http日志配置/系统监控配置/请求接口监听配置；
+ * @description 更改此文件时，需要重启系统使配置生效；
+ * @Warning Warning : 如果不清楚此文件所描述的具体意义项，请勿随意更改配置。
  */
 
 module.exports = {
     /* base config */
     base: {
         /**
-         * warning：
+         * !!! warning
          * 此对象仅能做基础配置，
          * 此配置将暴露给前端，
          * 不可在此对象内填写服务器相关配置；
@@ -27,9 +27,11 @@ module.exports = {
         // { Number : 3000 } 开发环境服务端口
         devPort: 3000,
         // { Number : 8080 } 生产环境服务端口,短端口可另外配Nginx做端口代理
-        proPort: 8080,
-        // { String : "URL" } 中间层接口地址
+        proPort: 4000,
+        // { String : "URL" } 中间层接口地址，默认本服务
         virtualServiceURL: 'http://localhost:3000/',
+        // { String : "URL" } 后端接口地址
+        trueServiceURL : 'http://localhost:8080',
         // { Boolean : false } 是否需要多线程模式启动项目，默认false关闭，开启后可使用多线程模式启动项目，在多核CPU下可显著支持并发数。开发模式不建议启用，windows不支持。
         isCluster: false,
     },

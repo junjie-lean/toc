@@ -1,8 +1,8 @@
 /*
  * @Author: junjie.lean 
  * @Date: 2019-01-07 16:32:26 
- * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-07 19:02:08
+ * @Last Modified by: lean
+ * @Last Modified time: 2019-01-08 22:20:11
  */
 
 /**
@@ -11,9 +11,12 @@
  */
 
 import axios from 'axios';
+import {base} from './../../config/config';
+const log = process.send ? process.send : console.log;
 
+// log(base)
 // const baseURL = "http://10.10.1.231:12120";
-const baseURL = "http://localhost:3000";
+const baseURL = `${base.virtualServiceURL}`;
 axios.defaults.baseURL = baseURL;
 axios.defaults.headers = {
     'Content-Type': "application/x-www-form-urlencoded",
@@ -22,7 +25,6 @@ axios.defaults.headers = {
     }
 }
 
-const log = process.send ? process.send : console.log;
 
 /**
  * 

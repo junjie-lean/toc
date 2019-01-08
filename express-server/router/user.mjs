@@ -1,13 +1,13 @@
 /*
  * @Author: junjie.lean 
  * @Date: 2018-12-22 00:03:02 
- * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-07 18:56:07
+ * @Last Modified by: lean
+ * @Last Modified time: 2019-01-08 22:36:03
  */
 
 
 /**
- * 在next中使用expres.Router()的实例：
+ * @description 在next中使用expres.Router()的实例：
  * 
  */
 
@@ -27,7 +27,7 @@ router.all('*', (req, res, next) => {
     next();
 })
 
-router.post('/systeam/module/get', (req, res) => {
+router.post('/a', (req, res) => {
     res.json({
         result: true,
         data: {
