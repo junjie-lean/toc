@@ -1,8 +1,8 @@
 /*
  * @Author: junjie.lean 
  * @Date: 2019-01-07 21:46:14 
- * @Last Modified by: lean
- * @Last Modified time: 2019-01-07 23:10:58
+ * @Last Modified by: junjie.lean
+ * @Last Modified time: 2019-01-08 13:05:28
  */
 
 /**
@@ -46,6 +46,7 @@ let dirList = fs.readdirSync(cwd);
 dirList.filter((item) => {
     return item == "express-server" ||
         item == "next" ||
+        item == "config" ||
         path.extname(item) == '.mjs'
 }).map((item) => {
     // console.log(item)
