@@ -1,3 +1,39 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _express = require("express");
+
+var _express2 = _interopRequireDefault(_express);
+
+var _next = require("next");
+
+var _next2 = _interopRequireDefault(_next);
+
+var _user = require("./../express-server/router/user");
+
+var _user2 = _interopRequireDefault(_user);
+
+var _loger = require("./../express-server/log-systeam/loger");
+
+var _loger2 = _interopRequireDefault(_loger);
+
+var _monitor = require("./../express-server/monitor/monitor");
+
+var _monitor2 = _interopRequireDefault(_monitor);
+
+var _bodyParser = require("body-parser");
+
+var _bodyParser2 = _interopRequireDefault(_bodyParser);
+
+var _config = require("./../config/config");
+
+var _config2 = _interopRequireDefault(_config);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 /*
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:11:46 
@@ -8,35 +44,28 @@
 /**
  * next服务，负责服务端渲染的服务实现
  */
-import express from 'express';
-import next from 'next';
-import userRouter from './../express-server/router/user';
-import logger from './../express-server/log-systeam/loger';
-import monitor from './../express-server/monitor/monitor';
-import bodyParser from 'body-parser';
-import config from './../config/config'; // console.log(config);
-
-var base = config.base;
+// console.log(config);
+var base = _config2.default.base;
 var port = base.isDev ? base.devPort : base.proPort;
 var dev = base.isDev;
-var app = next({
+var app = (0, _next2.default)({
   dev: dev
 });
 var handle = app.getRequestHandler();
 
 var startServer = function startServer() {
   app.prepare().then(function () {
-    var server = express();
-    server.use(bodyParser.json());
-    server.use(bodyParser.urlencoded({
+    var server = (0, _express2.default)();
+    server.use(_bodyParser2.default.json());
+    server.use(_bodyParser2.default.urlencoded({
       extended: true
     })); //日志中间件
 
-    server.use(logger); //monitor中间件
+    server.use(_loger2.default); //monitor中间件
 
-    server.use(monitor); //业务路由
+    server.use(_monitor2.default); //业务路由
 
-    server.use(userRouter);
+    server.use(_user2.default);
     server.get('*', function (req, res, next) {
       // switch (pathname) {
       //     case "": {
@@ -56,4 +85,4 @@ var startServer = function startServer() {
   });
 };
 
-export default startServer;
+exports.default = startServer;

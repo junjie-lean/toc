@@ -1,3 +1,33 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _express = require("express");
+
+var _express2 = _interopRequireDefault(_express);
+
+var _winston = require("winston");
+
+var _winston2 = _interopRequireDefault(_winston);
+
+var _expressWinston = require("express-winston");
+
+var _expressWinston2 = _interopRequireDefault(_expressWinston);
+
+require("winston-daily-rotate-file");
+
+var _path = require("path");
+
+var _path2 = _interopRequireDefault(_path);
+
+var _config = require("./../../config/config");
+
+var _config2 = _interopRequireDefault(_config);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 /*
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:11:10 
@@ -9,28 +39,25 @@
  * 集成Winston日志系统
  * 
  */
-import express from 'express';
-import winston from 'winston';
-import expressWinston from 'express-winston';
-import 'winston-daily-rotate-file';
-import path from 'path';
-import config from './../../config/config';
-var router = express.Router();
-var isDev = config.base.isDev;
-var needLoger = config.log.needLoger;
-var logFilePrefix = config.log.logFilePrefix;
-var needZipLog = config.log.needZipLog;
-var perLogSize = config.log.perLogSize;
-var maxFilesSize = config.log.maxFilesSize;
-var dirname__ = path.join(process.cwd(), 'logs');
-var needTailLog = config.log.needTailLog;
+var router = _express2.default.Router();
+
+var isDev = _config2.default.base.isDev;
+var needLoger = _config2.default.log.needLoger;
+var logFilePrefix = _config2.default.log.logFilePrefix;
+var needZipLog = _config2.default.log.needZipLog;
+var perLogSize = _config2.default.log.perLogSize;
+var maxFilesSize = _config2.default.log.maxFilesSize;
+
+var dirname__ = _path2.default.join(process.cwd(), 'logs');
+
+var needTailLog = _config2.default.log.needTailLog;
 
 var infoLog = function infoLog() {
   //router过滤关键词
   var transport = []; //log输出流配置，
 
   if (isDev && needTailLog) {
-    transport.push(new winston.transports.Console());
+    transport.push(new _winston2.default.transports.Console());
   }
 
   var ignoreRoute = function ignoreRoute(req, propName) {
@@ -52,7 +79,7 @@ var infoLog = function infoLog() {
     // let error = new winston.transports.File({ filename: './error.log', level: "error" });
     //需要进行log日志化http请求
     // console.log(0);
-    transport.push(new winston.transports.DailyRotateFile({
+    transport.push(new _winston2.default.transports.DailyRotateFile({
       filename: "".concat(logFilePrefix, "-info-%DATE%.log"),
       dirname: dirname__,
       datePattern: 'YYYY-MM-DD-HH',
@@ -60,9 +87,9 @@ var infoLog = function infoLog() {
       maxSize: perLogSize,
       maxFiles: maxFilesSize
     }));
-    return expressWinston.logger({
+    return _expressWinston2.default.logger({
       transports: [].concat(transport),
-      fromat: winston.format.combine(winston.format.colorize(), winston.format.json()),
+      fromat: _winston2.default.format.combine(_winston2.default.format.colorize(), _winston2.default.format.json()),
       meta: false,
       level: "info",
       msg: "HTTP method:{{req.method}},url:{{req.url}},statusCode:{{res.statusCode}},resTime:{{res.responseTime}}ms",
@@ -71,7 +98,7 @@ var infoLog = function infoLog() {
     });
   } else {
     //不需要进行log日志化http请求
-    return expressWinston.logger({
+    return _expressWinston2.default.logger({
       slient: true //all logs are suppressed
 
     });
@@ -82,11 +109,11 @@ var errorLog = function errorLog() {
   var transport = []; //log输出流配置，
 
   if (isDev) {
-    transport.push(new winston.transports.Console());
+    transport.push(new _winston2.default.transports.Console());
   }
 
   if (needLoger) {
-    transport.push(new winston.transports.DailyRotateFile({
+    transport.push(new _winston2.default.transports.DailyRotateFile({
       filename: "".concat(logFilePrefix, "-info-%DATE%.log"),
       dirname: dirname__,
       datePattern: 'YYYY-MM-DD-HH',
@@ -94,9 +121,9 @@ var errorLog = function errorLog() {
       maxSize: perLogSize,
       maxFiles: maxFilesSize
     }));
-    return expressWinston.errorLogger({
+    return _expressWinston2.default.errorLogger({
       transports: [].concat(transport),
-      fromat: winston.format.combine(winston.format.colorize(), winston.format.json()),
+      fromat: _winston2.default.format.combine(_winston2.default.format.colorize(), _winston2.default.format.json()),
       meta: true,
       level: "error",
       msg: "HTTP method:{{req.method}},url:{{req.url}},statusCode:{{res.statusCode}},resTime:{{res.responseTime}}ms",
@@ -104,7 +131,7 @@ var errorLog = function errorLog() {
     });
   } else {
     //不需要进行log日志化http请求
-    return expressWinston.logger({
+    return _expressWinston2.default.logger({
       slient: true //all logs are suppressed
 
     });
@@ -118,4 +145,4 @@ router.post('*', function (req, res, next) {
     result: true
   });
 });
-export default router;
+exports.default = router;

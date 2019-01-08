@@ -1,3 +1,23 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _express = require("express");
+
+var _express2 = _interopRequireDefault(_express);
+
+var _expressStatusMonitor = require("express-status-monitor");
+
+var _expressStatusMonitor2 = _interopRequireDefault(_expressStatusMonitor);
+
+var _config = require("./../../config/config");
+
+var _config2 = _interopRequireDefault(_config);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 /*
  * @Author: junjie.lean
  * @Date: 2018-12-24 17:08:57
@@ -8,15 +28,13 @@
 /**
  * server-monitor Middleware
  */
-import express from 'express';
-import expressStatusMonitor from 'express-status-monitor';
-import config from './../../config/config';
-var router = express.Router();
+var router = _express2.default.Router();
+
 var option = {
-  title: config.systeamMonitor.pageTitle,
+  title: _config2.default.systeamMonitor.pageTitle,
   theme: 'default.css',
   // Default styles
-  path: config.systeamMonitor.pagePath,
+  path: _config2.default.systeamMonitor.pagePath,
   spans: [{
     interval: 1,
     // Every second
@@ -35,17 +53,17 @@ var option = {
     retention: 60
   }],
   chartVisibility: {
-    cpu: config.systeamMonitor.cpu,
-    mem: config.systeamMonitor.mem,
-    load: config.systeamMonitor.load,
-    responseTime: config.systeamMonitor.responseTime,
-    rps: config.systeamMonitor.rps,
-    statusCodes: config.systeamMonitor.statusCodes
+    cpu: _config2.default.systeamMonitor.cpu,
+    mem: _config2.default.systeamMonitor.mem,
+    load: _config2.default.systeamMonitor.load,
+    responseTime: _config2.default.systeamMonitor.responseTime,
+    rps: _config2.default.systeamMonitor.rps,
+    statusCodes: _config2.default.systeamMonitor.statusCodes
   }
 };
 
-if (config.systeamMonitor) {
-  router.use(expressStatusMonitor(option));
+if (_config2.default.systeamMonitor) {
+  router.use((0, _expressStatusMonitor2.default)(option));
 }
 
-export default router;
+exports.default = router;
