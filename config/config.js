@@ -2,14 +2,14 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:08:16 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-07 18:44:20
+ * @Last Modified time: 2019-01-08 16:05:25
  */
 
 /**
  * 配置信息集合：
  * 介绍：configuration对象包含了基础配置/http日志配置/系统监控配置/请求接口监听配置；
  * 更改此文件时，需要重启系统使配置生效；
- * Warning : 如果对于此文件所表达的描述不清楚，请勿随意更改配置。
+ * Warning : 如果不清楚此文件所描述的具体意义项，请勿随意更改配置。
  */
 
 const configuration = {
@@ -79,4 +79,4 @@ const configuration = {
 
 }
 
-export default configuration
+exports.default = configuration;
