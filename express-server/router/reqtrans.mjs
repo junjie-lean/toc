@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-22 00:03:02 
  * @Last Modified by: lean
- * @Last Modified time: 2019-01-10 00:17:24
+ * @Last Modified time: 2019-01-10 00:24:36
  */
 
 
@@ -60,7 +60,7 @@ router.post('*', (req, res, next) => {
                 })
             } else {
                 return res.json({
-                    result: false
+                    result: false,
                     status:200,
                     message:'not ok',
                 })
