@@ -1,8 +1,8 @@
 /*
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:08:16 
- * @Last Modified by: lean
- * @Last Modified time: 2019-01-09 00:22:30
+ * @Last Modified by: junjie.lean
+ * @Last Modified time: 2019-01-09 17:30:17
  */
 
 /**
@@ -28,7 +28,7 @@ module.exports = {
         isDev: process.env.NODE_ENV == 'development',
         // { Number : 3000 } 开发环境服务端口
         devPort: 3000,
-        // { Number : 8080 } 生产环境服务端口,短端口可另外配Nginx做端口代理
+        // { Number : 4000 } 生产环境服务端口,短端口可另外配Nginx做端口代理
         proPort: 4000,
         // { String : "URL" } 中间层接口地址，默认本服务
         virtualServiceURL: 'http://localhost:3000/',

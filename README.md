@@ -1,20 +1,24 @@
 - [架构背景及介绍](#%E6%9E%B6%E6%9E%84%E8%83%8C%E6%99%AF%E5%8F%8A%E4%BB%8B%E7%BB%8D)
 - [主要使用到的技术栈](#%E4%B8%BB%E8%A6%81%E4%BD%BF%E7%94%A8%E5%88%B0%E7%9A%84%E6%8A%80%E6%9C%AF%E6%A0%88)
 - [架构相关技术说明](#%E6%9E%B6%E6%9E%84%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E)
+- [Create-next-app脚手架](#create-next-app%E8%84%9A%E6%89%8B%E6%9E%B6)
 - [Why Next?](#why-next)
-- [原脚手架说明](#%E5%8E%9F%E8%84%9A%E6%89%8B%E6%9E%B6%E8%AF%B4%E6%98%8E)
 - [生产模式和开发环境下的启动命令](#%E7%94%9F%E4%BA%A7%E6%A8%A1%E5%BC%8F%E5%92%8C%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E5%90%AF%E5%8A%A8%E5%91%BD%E4%BB%A4)
+  - [`npm run eject`](#npm-run-eject)
+  - [`npm run dev`](#npm-run-dev)
   - [`npm run dev:m`](#npm-run-devm)
+  - [`npm run pro`](#npm-run-pro)
   - [`npm run pro:m`](#npm-run-prom)
   - [`npm run build`](#npm-run-build)
   - [other-cli](#other-cli)
 - [styled-jsx的语法支持](#styled-jsx%E7%9A%84%E8%AF%AD%E6%B3%95%E6%94%AF%E6%8C%81)
 - [组件编写方式：](#%E7%BB%84%E4%BB%B6%E7%BC%96%E5%86%99%E6%96%B9%E5%BC%8F)
 - [!!!获取数据的方式](#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E5%BC%8F)
-- [部署相关](#%E9%83%A8%E7%BD%B2%E7%9B%B8%E5%85%B3)
+- [项目目录结构](#%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84)
 - [日志系统](#%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F)
 - [性能监控](#%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7)
 - [接口监控](#%E6%8E%A5%E5%8F%A3%E7%9B%91%E6%8E%A7)
+- [部署相关](#%E9%83%A8%E7%BD%B2%E7%9B%B8%E5%85%B3)
 - [其他](#%E5%85%B6%E4%BB%96)
 - [Thanks For](#thanks-for)
 
@@ -62,6 +66,9 @@
  - Moniter
  - db
 
+## Create-next-app脚手架
+
+[这是](https://github.com/segmentio/create-next-app)Next的Github地址，如有有问题可在此处给开发者提issues。
 
 ## Why Next?
 Next是非常轻量化的SSR框架，该项目启动到现在已经有非常多的互联网公司使用了该框架，这些互联网公司和Next的作者一起推动着Next框架的发展。目前Next的版本已经发展到7.x，已经达到一个稳定的、产品级的程度。
@@ -82,23 +89,29 @@ Next轻量化，首屏响应时间只需要30ms左右，同等量级的页面首
 
 [学习Next](https://nextjs.org/learn/)
 
-## 原脚手架说明
 
-[这是](https://github.com/segmentio/create-next-app)Next的Github地址，如有有问题可在此处给开发者提issues。
 
 ## 生产模式和开发环境下的启动命令
 
 在项目目录下，支持的命令：
+### `npm run eject`
+执行此命令，会根据源文件生成一些启动文件，项目初始化时执行一次即可；
 
-### `npm run dev:m`
-执行此命令 会已开发模式启动项目，并会在浏览器打开[http://localhost:8080](http://localhost:8080)。
+### `npm run dev`
+执行此命令 会已开发模式启动项目，并会在浏览器打开[http://localhost:3000](http://localhost:3000)（默认开发端口3000）。
 在编写任何组件后，项目会立即更新。
 
+### `npm run dev:m`
+同上，只是启动的是mjs脚本。
+
+### `npm run pro`
+执行此命令，会先对项目进行编译，然后以生产模式启动项目，默认地址为[http://localhost:4000](http://localhost:4000)，如果项目是非windows-server,还可以支持负债均衡。（负载均衡源于Node.cluster的多进程实现，Windows的系统调度不支持这种方式，如果需要在Windows-Server下实现负载均衡，需要额外配置PM2和Nginx）。
+
 ### `npm run pro:m`
-执行此命令，会先对项目进行编译，然后以生产模式启动项目。如果项目是非windows-server,还可以支持负债均衡。（负载均衡源于Node.cluster的多进程实现，Windows的系统调度不支持这种方式，如果需要在Windows-Server下实现负载均衡，需要额外配置PM2和Nginx）。
+同上，只是启动的是mjs脚本
 
 ### `npm run build`
-对项目执行编译，生成程序包。“npm run pro:m”的时候会默认执行一次build操作。
+对项目执行编译，生成程序包。“npm run pro”的时候会默认执行一次build操作。
 
 ### other-cli
 其他命令可在package.json的scripts字段中进行配置。
@@ -184,6 +197,61 @@ export default class Page extends React.component{
 了解更多：[获取数据的方法及组件生命周期](https://github.com/zeit/next.js#fetching-data-and-component-lifecycle)
 
 
+## 项目目录结构
+
+```
+project_dir:
+  config/
+    config.js
+  express-server/
+    log-systeam/
+      loger.mjs
+    monitor/
+      monitor.mjs
+    router/
+      user.mjs
+  logs/
+  next/
+    next-server.mjs  
+  pages/
+    index.jsx
+    helloWorld.jsx
+  src/
+    components/
+    js/
+      g.js
+      request.js
+    redux/
+    scss/
+    view/
+  static/
+    pic/
+    favicon.ico
+  test/
+    test.js
+  util/
+    babel.js
+  .gitignore
+  next.config.js
+  package.json
+  README.md
+  server.mjs
+```
+
+
+## 日志系统
+
+- 集成基于winston的可配置化日志系统，可根据配置保留任意HTTP请求信息；
+- 按小时创建文件，按天打包文件；
+
+## 性能监控
+
+支持当前运行环境的性能监控并生成日志。
+
+## 接口监控
+
+支持接口调用监控
+
 ## 部署相关
 
 支持多种部署方式
@@ -196,19 +264,6 @@ export default class Page extends React.component{
   - Windows
   - Linux
   - ...
-
-## 日志系统
-
-支持可配置化的日志系统
-
-## 性能监控
-
-支持当前运行环境的性能监控并生成日志。
-
-## 接口监控
-
-支持接口调用监控
-
 
 ## 其他
   ...
