@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2019-01-07 21:46:14 
  * @Last Modified by: lean
- * @Last Modified time: 2019-01-10 00:05:32
+ * @Last Modified time: 2019-01-10 00:23:59
  */
 
 /**
@@ -53,7 +53,7 @@ let babelFileFun = (filepath) => {
                 //     }
                 //     console.log('Delete the file:', path.basename(filepath))
                 // })
-                console.log(chalk.red('暂不支持删除操作！'))
+                console.log(chalk.black.bgWhite.bold('暂不支持删除操作！'))
             }
         }
 
