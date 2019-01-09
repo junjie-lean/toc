@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2019-01-07 21:46:14 
  * @Last Modified by: lean
- * @Last Modified time: 2019-01-10 00:23:59
+ * @Last Modified time: 2019-01-10 00:28:27
  */
 
 /**
@@ -53,7 +53,7 @@ let babelFileFun = (filepath) => {
                 //     }
                 //     console.log('Delete the file:', path.basename(filepath))
                 // })
-                console.log(chalk.black.bgWhite.bold('暂不支持删除操作！'))
+                // console.log(chalk.black.bgWhite.bold('暂不支持删除操作！'))
             }
         }
 
@@ -63,7 +63,7 @@ let babelFileFun = (filepath) => {
 
 let confirm = () => {
     return new Promise((resolve, reject) => {
-        console.log(chalk.bgRed(" ATTENTION "),chalk.yellow('Need to delete the source files after Babel is compiled?'))
+        console.log(chalk.bgRed(" ATTENTION "), chalk.yellow('Need to delete the source files after Babel is compiled?'))
         const rl = readline.createInterface({
             input: process.stdin,
             output: process.stdout,
@@ -71,6 +71,7 @@ let confirm = () => {
         rl.question(` => y(${chalk.red("yes")}) or n(no):  `, (answer) => {
             if (answer.toLowerCase() == "yes" || answer.toLowerCase() == "y") {
                 needDelete = true;
+                console.log(chalk.bgRed.bold(' 暂不支持删除源文件操作！ '))
             }
             rl.close();
             resolve();
@@ -113,6 +114,7 @@ let babel = () => {
                 }
             })
         })
+
         resolve();
     })
 }

@@ -32,17 +32,22 @@ router.post('*', function (req, res, next) {
       if (response.status == 200 && response.statusText == "OK") {
         return res.json({
           result: true,
+          status: 200,
+          message: 'ok',
           data: response.data
         });
       } else {
         return res.json({
-          result: false
+          result: false,
+          status: 200,
+          message: 'not ok'
         });
       }
     }).catch(function (err) {
-      console.log('errrrrrrrrrrrrrr', err);
       return res.json({
         result: false,
+        status: 500,
+        message: "error",
         err: err
       });
     });
