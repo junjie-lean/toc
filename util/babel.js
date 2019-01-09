@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2019-01-07 21:46:14 
  * @Last Modified by: lean
- * @Last Modified time: 2019-01-08 22:02:43
+ * @Last Modified time: 2019-01-09 21:36:20
  */
 
 /**
@@ -82,7 +82,7 @@ let babel = () => {
         let dirList = fs.readdirSync(cwd);
         dirList.filter((item) => {
             return item == "express-server" ||
-                item == "next" ||
+                item == "next-server" ||
                 path.extname(item) == '.mjs'
         }).map((item) => {
             // console.log(item)

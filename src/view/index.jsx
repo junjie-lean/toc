@@ -2,7 +2,7 @@
  * @Author: junjie.lean
  * @Date: 2018-12-22 00:08:05
  * @Last Modified by: lean
- * @Last Modified time: 2019-01-06 01:54:28
+ * @Last Modified time: 2019-01-09 21:20:57
  */
 
 /**
@@ -16,6 +16,7 @@ import Router from 'next/router';
 import { Button } from 'antd';
 import Lifecycle from '../components/Lifecycle';
 import IndexScss from './../scss/index.scss';
+// import G from './../js/g';
 
 export default class Index extends React.Component {
   constructor(props) {
@@ -34,6 +35,9 @@ export default class Index extends React.Component {
     this.setState({
       name: this.state.name + 1
     })
+  }
+  componentDidMount(){
+    // console.log(G)
   }
   render() {
     let props = this.props;

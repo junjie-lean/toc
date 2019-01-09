@@ -22,6 +22,9 @@ module.exports = withSass({
         ]
       },
     )
+    config.node = {
+      fs:"empty"
+    }
     // config.output.path = `${__dirname}/.lean`
     return config
   }

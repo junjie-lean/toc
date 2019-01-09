@@ -1,8 +1,8 @@
 /*
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:08:16 
- * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-09 17:30:17
+ * @Last Modified by: lean
+ * @Last Modified time: 2019-01-09 21:19:27
  */
 
 /**
@@ -11,6 +11,7 @@
  * @description 更改此文件时，需要重启系统使配置生效；
  * @Warning Warning : 如果不清楚此文件所描述的具体意义项，请勿随意更改配置。
  */
+
 const fs = require('fs');
 const path = require('path');
 
@@ -82,8 +83,7 @@ module.exports = {
     /**========================================================================================= */
     /* create G.js */
     createGlobalFile: (pr) => {
-        console.log(pr);
-
+        // console.log(pr);
         let data = ` 
 /*
 * @Author: junjie.lean

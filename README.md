@@ -1,5 +1,5 @@
-- [架构背景及介绍](#%E6%9E%B6%E6%9E%84%E8%83%8C%E6%99%AF%E5%8F%8A%E4%BB%8B%E7%BB%8D)
-- [主要使用到的技术栈](#%E4%B8%BB%E8%A6%81%E4%BD%BF%E7%94%A8%E5%88%B0%E7%9A%84%E6%8A%80%E6%9C%AF%E6%A0%88)
+- [架构设计背景及介绍](#%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E8%83%8C%E6%99%AF%E5%8F%8A%E4%BB%8B%E7%BB%8D)
+- [框架技术栈](#%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF%E6%A0%88)
 - [架构相关技术说明](#%E6%9E%B6%E6%9E%84%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E)
 - [Create-next-app脚手架](#create-next-app%E8%84%9A%E6%89%8B%E6%9E%B6)
 - [Why Next?](#why-next)
@@ -11,8 +11,9 @@
   - [`npm run pro:m`](#npm-run-prom)
   - [`npm run build`](#npm-run-build)
   - [other-cli](#other-cli)
-- [styled-jsx的语法支持](#styled-jsx%E7%9A%84%E8%AF%AD%E6%B3%95%E6%94%AF%E6%8C%81)
 - [组件编写方式：](#%E7%BB%84%E4%BB%B6%E7%BC%96%E5%86%99%E6%96%B9%E5%BC%8F)
+- [styled-jsx的语法支持](#styled-jsx%E7%9A%84%E8%AF%AD%E6%B3%95%E6%94%AF%E6%8C%81)
+- [Sass语法支持](#sass%E8%AF%AD%E6%B3%95%E6%94%AF%E6%8C%81)
 - [!!!获取数据的方式](#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E5%BC%8F)
 - [项目目录结构](#%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84)
 - [日志系统](#%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F)
@@ -22,7 +23,7 @@
 - [其他](#%E5%85%B6%E4%BB%96)
 - [Thanks For](#thanks-for)
 
-## 架构背景及介绍
+## 架构设计背景及介绍
 　　设计此开发架构的初衷是，“在规范前端开发模式的前提下尽量提高页面渲染速度，优化用户体验”。 从现在整个前端圈开发势头来看，基本没有什么公司还在使用常规的“HTML+CSS+JSlib”这种较落后的开发模式进行前端开发，整个前端基本上是NG、Vue、React三分天下。  
   
 　　目前我们公司前端组使用的是基于React的single page application开发模式，即在React框架的基础下，使用其他第三方插件，进行组件式开发，最终打包生成一个HMLT文件、一个CSS文件、一个JS文件和若干媒体文件，这种模式非常利于开发和部署。  
@@ -33,7 +34,7 @@
   
 　　刚好，Next.js即是包含了以上两点特性的框架.它简单易用，扩展性高，支持code splitting,自动生成chunk,并且有“create-next-app”这样优秀的脚手架作为初始化模版。于是我在“create-next-app”脚手架的基础下进行了增量配置，从而形成一个高可用、高拓展性的开发架构。  
 
-## 主要使用到的技术栈
+## 框架技术栈
 
 *业务级开发人员仅需要了解：*
  - React
@@ -108,13 +109,33 @@ Next轻量化，首屏响应时间只需要30ms左右，同等量级的页面首
 执行此命令，会先对项目进行编译，然后以生产模式启动项目，默认地址为[http://localhost:4000](http://localhost:4000)，如果项目是非windows-server,还可以支持负债均衡。（负载均衡源于Node.cluster的多进程实现，Windows的系统调度不支持这种方式，如果需要在Windows-Server下实现负载均衡，需要额外配置PM2和Nginx）。
 
 ### `npm run pro:m`
-同上，只是启动的是mjs脚本
+ 同上，只是启动的是mjs脚本
 
 ### `npm run build`
 对项目执行编译，生成程序包。“npm run pro”的时候会默认执行一次build操作。
 
 ### other-cli
 其他命令可在package.json的scripts字段中进行配置。
+
+## 组件编写方式：
+
+对Reacter非常友好的语法：
+
+```jsx
+import { Component } from 'react'
+export default class Complex extends Component {
+constructor(props) {
+    super(props);
+    this.state = {
+    text: 'World'
+    }
+}
+  render() {
+    const { text } = this.state
+    return <div>Hello {text}</div>
+  }
+}
+```
 
 ## styled-jsx的语法支持
 
@@ -149,25 +170,11 @@ export default class Index extends React.Component (
 ```
 了解更多：[Next's CSS features](https://github.com/zeit/next.js#css).
 
-## 组件编写方式：
+## Sass语法支持
+  
+  可以在框架内直接写sass语法，并直接引入
 
-对Reacter非常友好的语法：
 
-```jsx
-import { Component } from 'react'
-export default class Complex extends Component {
-constructor(props) {
-    super(props);
-    this.state = {
-    text: 'World'
-    }
-}
-  render() {
-    const { text } = this.state
-    return <div>Hello {text}</div>
-  }
-}
-```
 
 ## !!!获取数据的方式
 
@@ -184,7 +191,7 @@ export default class Page extends React.component{
     }else{
       return {}
     }
-  }
+  // }
   render (){
     let props = this.props;
     return (
@@ -200,7 +207,7 @@ export default class Page extends React.component{
 ## 项目目录结构
 
 ```
-project_dir:
+ project_dir:
   config/
     config.js
   express-server/
@@ -241,7 +248,7 @@ export default class Page extends React.component{
 
 ## 日志系统
 
-- 集成基于winston的可配置化日志系统，可根据配置保留任意HTTP请求信息；
+- 集成基于winston的可配置化日志系统，可根据配置保留任意HTTP请求元信息；
 - 按小时创建文件，按天打包文件；
 
 ## 性能监控
