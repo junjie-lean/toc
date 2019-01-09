@@ -1,5 +1,5 @@
 {
-  "name": "falsework-with-next7",
+  "name": "toc_app",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node  server.js",
     "eject": "cross-env NODE_ENV=development node util/babel.js",

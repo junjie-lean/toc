@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:11:46 
  * @Last Modified by: lean
- * @Last Modified time: 2019-01-09 21:33:30
+ * @Last Modified time: 2019-01-09 21:50:34
  */
 
 /**
@@ -11,7 +11,7 @@
 
 import express from 'express';
 import next from 'next';
-import userRouter from './../express-server/router/user';
+import reqtrans from './../express-server/router/reqtrans';
 import logger from './../express-server/log-systeam/loger';
 import monitor from './../express-server/monitor/monitor';
 import bodyParser from 'body-parser';
@@ -37,9 +37,9 @@ let startServer = () => {
         server.use(logger);
         //monitor中间件
         server.use(monitor);
+        //请求转发中间件
+        server.use(reqtrans);
 
-        //业务路由
-        server.use(userRouter);
         server.get('*', (req, res, next) => {
             // switch (pathname) {
             //     case "": {

@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:08:16 
  * @Last Modified by: lean
- * @Last Modified time: 2019-01-09 21:19:27
+ * @Last Modified time: 2019-01-09 21:52:31
  */
 
 /**
@@ -78,7 +78,7 @@ module.exports = {
     /* api call listen config */
     apiListen: {
         // { Boolean : true } 是否启用接口转发模式
-        ajaxTransform: true,
+        ajaxTranspond: true,
     },
     /**========================================================================================= */
     /* create G.js */

@@ -9,7 +9,7 @@ var _express = _interopRequireDefault(require("express"));
 
 var _next = _interopRequireDefault(require("next"));
 
-var _user = _interopRequireDefault(require("./../express-server/router/user"));
+var _reqtrans = _interopRequireDefault(require("./../express-server/router/reqtrans"));
 
 var _loger = _interopRequireDefault(require("./../express-server/log-systeam/loger"));
 
@@ -38,7 +38,7 @@ var startServer = function startServer() {
     }));
     server.use(_loger.default);
     server.use(_monitor.default);
-    server.use(_user.default);
+    server.use(_reqtrans.default);
     server.get('*', function (req, res, next) {
       return handle(req, res);
     });

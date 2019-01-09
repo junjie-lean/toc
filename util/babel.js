@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2019-01-07 21:46:14 
  * @Last Modified by: lean
- * @Last Modified time: 2019-01-09 21:36:20
+ * @Last Modified time: 2019-01-10 00:05:32
  */
 
 /**
@@ -16,6 +16,8 @@ const readline = require('readline');
 const chalk = require('chalk');
 const async = require('async');
 let cwd = process.cwd(); // ==> out path
+
+let NEED_BABEL_DIR = []
 
 let needDelete = false;
 let babelFileFun = (filepath) => {
@@ -61,12 +63,12 @@ let babelFileFun = (filepath) => {
 
 let confirm = () => {
     return new Promise((resolve, reject) => {
-        console.log(chalk.yellow('Need to delete the source files after Babel is compiled?'))
+        console.log(chalk.bgRed(" ATTENTION "),chalk.yellow('Need to delete the source files after Babel is compiled?'))
         const rl = readline.createInterface({
             input: process.stdin,
             output: process.stdout,
         });
-        rl.question(`=>y(${chalk.red("yes")}) or n(no):  `, (answer) => {
+        rl.question(` => y(${chalk.red("yes")}) or n(no):  `, (answer) => {
             if (answer.toLowerCase() == "yes" || answer.toLowerCase() == "y") {
                 needDelete = true;
             }
@@ -75,7 +77,6 @@ let confirm = () => {
         })
     })
 }
-
 let babel = () => {
     return new Promise((resolve, reject) => {
         console.log('needDelete:', needDelete)
@@ -83,6 +84,7 @@ let babel = () => {
         dirList.filter((item) => {
             return item == "express-server" ||
                 item == "next-server" ||
+                item == "src" ||
                 path.extname(item) == '.mjs'
         }).map((item) => {
             // console.log(item)
