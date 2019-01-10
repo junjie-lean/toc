@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2019-01-07 21:46:14 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-10 16:11:06
+ * @Last Modified time: 2019-01-10 16:59:30
  */
 
 /**
@@ -16,10 +16,11 @@ const readline = require('readline');
 const chalk = require('chalk');
 const async = require('async');
 const signale = require('signale');
+
+
+
 let cwd = process.cwd(); // ==> out path
-
 let NEED_BABEL_DIR = []
-
 let needDelete = false;
 let babelFileFun = (filepath) => {
     if (!filepath || !path.isAbsolute(filepath) || path.extname(filepath) == ".js") {
