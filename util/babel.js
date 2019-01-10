@@ -1,12 +1,12 @@
 /*
  * @Author: junjie.lean 
  * @Date: 2019-01-07 21:46:14 
- * @Last Modified by: lean
- * @Last Modified time: 2019-01-10 00:28:27
+ * @Last Modified by: junjie.lean
+ * @Last Modified time: 2019-01-10 16:11:06
  */
 
 /**
- * 对实验性的node语法进行编译
+ * @description 对node语法进行降级编译
  */
 
 const path = require('path');
@@ -15,6 +15,7 @@ const fs = require('fs');
 const readline = require('readline');
 const chalk = require('chalk');
 const async = require('async');
+const signale = require('signale');
 let cwd = process.cwd(); // ==> out path
 
 let NEED_BABEL_DIR = []
@@ -53,75 +54,75 @@ let babelFileFun = (filepath) => {
                 //     }
                 //     console.log('Delete the file:', path.basename(filepath))
                 // })
-                // console.log(chalk.black.bgWhite.bold('暂不支持删除操作！'))
             }
         }
 
     })
-
 }
 
 let confirm = () => {
-    return new Promise((resolve, reject) => {
-        console.log(chalk.bgRed(" ATTENTION "), chalk.yellow('Need to delete the source files after Babel is compiled?'))
-        const rl = readline.createInterface({
-            input: process.stdin,
-            output: process.stdout,
-        });
-        rl.question(` => y(${chalk.red("yes")}) or n(no):  `, (answer) => {
-            if (answer.toLowerCase() == "yes" || answer.toLowerCase() == "y") {
-                needDelete = true;
-                console.log(chalk.bgRed.bold(' 暂不支持删除源文件操作！ '))
-            }
-            rl.close();
-            resolve();
-        })
+    console.log(chalk.bgRed(" ATTENTION "), chalk.yellow('Need to delete the source files after Babel is compiled?'))
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+    });
+    rl.question(` => y(${chalk.red("yes")}) or n(no):  `, (answer) => {
+        if (answer.toLowerCase() == "yes" || answer.toLowerCase() == "y") {
+            needDelete = true;
+            console.log(chalk.bgRed.bold(' Not support Delete source file '))
+        }
+        rl.close();
+        signale.start('start compile ...')
     })
 }
+
 let babel = () => {
-    return new Promise((resolve, reject) => {
-        console.log('needDelete:', needDelete)
-        let dirList = fs.readdirSync(cwd);
-        dirList.filter((item) => {
-            return item == "express-server" ||
-                item == "next-server" ||
-                item == "src" ||
-                path.extname(item) == '.mjs'
-        }).map((item) => {
-            // console.log(item)
-            fs.stat(path.join(cwd, item), (err, stats) => {
-                if (stats.isDirectory()) {
-                    loop(path.join(cwd, item))
-                    function loop(_path) {
-                        let o = fs.statSync(_path)
-                        if (o.isDirectory()) {
-                            let thisChildPath = fs.readdirSync(_path);
-                            thisChildPath.map((item) => {
-                                // console.log(path.join(_path,item))
-                                loop(path.join(_path, item))
-                            })
-                        } else {
-                            // console.log(_path)
-                            // console.log(path.basename(_path))
-                            if (path.extname(_path) == '.mjs') {
-                                babelFileFun(_path);
-                            }
-                        }
-                    }
-
+    // console.log('needDelete:', needDelete)
+    let dirList = fs.readdirSync(cwd).filter((item) => {
+        return item == "express-server" ||
+            item == "next-server" ||
+            item == "src" ||
+            path.extname(item) == '.mjs'
+    });
+    dirList.map((item) => {
+        // console.log(item)
+        let stats = fs.statSync(path.join(cwd, item));
+        if (stats.isDirectory()) {
+            loop(path.join(cwd, item))
+            function loop(_path) {
+                let o = fs.statSync(_path)
+                if (o.isDirectory()) {
+                    let thisChildPath = fs.readdirSync(_path);
+                    thisChildPath.map((item) => {
+                        // console.log(path.join(_path,item))
+                        loop(path.join(_path, item))
+                    })
                 } else {
-                    babelFileFun(path.join(cwd, item))
+                    if (path.extname(_path) == '.mjs') {
+                        babelFileFun(_path);
+                    }
                 }
-            })
-        })
-
-        resolve();
+            }
+        } else {
+            babelFileFun(path.join(cwd, item))
+        }
     })
 }
 
-(async () => {
-    await confirm();
-    await babel();
-    console.log(chalk.green("babel compile success..."))
-})()
 
+async.series([
+    (cb) => {
+        confirm();
+        cb(null);
+    },
+    (cb) => {
+        babel();
+        cb(null);
+    },
+    (cb) => {
+        setTimeout(() => {
+            // signale.success('compile all mjs file success ...')
+            cb(null)
+        }, 100)
+    }
+])

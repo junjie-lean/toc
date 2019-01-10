@@ -1,8 +1,9 @@
 - [架构设计背景及介绍](#%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E8%83%8C%E6%99%AF%E5%8F%8A%E4%BB%8B%E7%BB%8D)
 - [框架技术栈](#%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF%E6%A0%88)
-- [架构相关技术说明](#%E6%9E%B6%E6%9E%84%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E)
-- [Create-next-app脚手架](#create-next-app%E8%84%9A%E6%89%8B%E6%9E%B6)
+- [框架相关技术说明](#%E6%A1%86%E6%9E%B6%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E)
+- [NEXT框架](#next%E6%A1%86%E6%9E%B6)
 - [Why Next?](#why-next)
+- [What toc.js Can Do?](#what-tocjs-can-do)
 - [生产模式和开发环境下的启动命令](#%E7%94%9F%E4%BA%A7%E6%A8%A1%E5%BC%8F%E5%92%8C%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E5%90%AF%E5%8A%A8%E5%91%BD%E4%BB%A4)
   - [`npm run eject`](#npm-run-eject)
   - [`npm run dev`](#npm-run-dev)
@@ -10,6 +11,7 @@
   - [`npm run pro`](#npm-run-pro)
   - [`npm run pro:m`](#npm-run-prom)
   - [`npm run build`](#npm-run-build)
+  - [`npm run test`](#npm-run-test)
   - [other-cli](#other-cli)
 - [组件编写方式：](#%E7%BB%84%E4%BB%B6%E7%BC%96%E5%86%99%E6%96%B9%E5%BC%8F)
 - [styled-jsx的语法支持](#styled-jsx%E7%9A%84%E8%AF%AD%E6%B3%95%E6%94%AF%E6%8C%81)
@@ -32,7 +34,9 @@
   
 　　针对这种情况，目前市面上的解决方案有两种：一是使用JS-chunk模式，将较大的JS文件切割成较小的多个JS文件。这样就能每次请求较小的JS文件，用户也不必等待整个JS大文件下载后才能看到页面。二是使用服务端渲染，在用户请求时候，给用户返回带已有业务数据的HTML文件给浏览器进行渲染，从而降低用户等待时间。
   
-　　刚好，Next.js即是包含了以上两点特性的框架.它简单易用，扩展性高，支持code splitting,自动生成chunk,并且有“create-next-app”这样优秀的脚手架作为初始化模版。于是我在“create-next-app”脚手架的基础下进行了增量配置，从而形成一个高可用、高拓展性的开发架构。  
+　　刚好，Next.js即是包含了以上两点特性的框架.它简单易用，扩展性高，支持code splitting,自动生成chunk,并且有“create-next-app”这样优秀的脚手架作为初始化模版。于是我在“create-next-app”脚手架的基础下进行了增量配置，从而形成一个高可用、高拓展性的开发框架——“toc.js”。  
+
+  （toc.js 取 “Top of Cloud” 云巅之意）
 
 ## 框架技术栈
 
@@ -40,7 +44,6 @@
  - React
  - React-redux
  - Ant design
- - Axios
   
 *框架级开发人员需要额外了解：*
  - Next
@@ -50,11 +53,12 @@
 *如果有兴趣可以额外了解：*  
  - Winston
  - Monitor
- - db
  - SSR原理
+ - db（暂不支持）
+ - 单元测试（暂不支持）
 
 
-## 架构相关技术说明
+## 框架相关技术说明
 
 *前端层：*
  - 使用Next框架是因为Next的UI层是基于React的语法实现，在React使用的比较熟练的情况下，写起Next组件非常轻松；具体可见[下面](#why-next)的介绍。如果是对Vue语法比较熟悉的情况下，可以考虑Next作者所作的另一个SSR框架“Nuxt”。
@@ -62,14 +66,16 @@
  - Ant design 做UI组件库。
   
 *服务层：*
- - Node做运行环境,使用额外参数起Express服务使之支持ES6模块语法，如果是非windows的生产环境下还会加载cluster模块进行负载均衡。express服务单独写router监听接口，或者直接通过axios转发请求。
- - 使用winston做HTTP-loger，监控正常请求，鉴别非法请求。
- - Moniter
+ - Node做运行环境,如果是非windows的生产环境下还会加载cluster模块进行负载均衡。express服务单独写router监听接口，或者直接通过axios转发请求。
+ - 使用winston做HTTP-loger，监控正常请求，鉴别非法请求，并讲请求元信息保存成日志形式。
+ - Monitor 实时服务性能监控 
  - db
 
-## Create-next-app脚手架
+## NEXT框架
 
-[这是](https://github.com/segmentio/create-next-app)Next的Github地址，如有有问题可在此处给开发者提issues。
+[这是](https://nextjs.org/)Next官网地址。
+[这是](https://github.com/segmentio/create-next-app)Next的脚手架地址，如有有问题可在此处给开发者提issues。
+
 
 ## Why Next?
 Next是非常轻量化的SSR框架，该项目启动到现在已经有非常多的互联网公司使用了该框架，这些互联网公司和Next的作者一起推动着Next框架的发展。目前Next的版本已经发展到7.x，已经达到一个稳定的、产品级的程度。
@@ -90,10 +96,13 @@ Next轻量化，首屏响应时间只需要30ms左右，同等量级的页面首
 
 [学习Next](https://nextjs.org/learn/)
 
+## What toc.js Can Do?
 
+  toc.js可以单纯的做为UI渲染框架，做静态页面展示；
+  toc.js可以通过中间层配合后端，做服务端渲染框架，这也是toc最理想的使用场景；
+  toc.js可以只做接口转发服务器，做接口监听服务；
 
 ## 生产模式和开发环境下的启动命令
-
 在项目目录下，支持的命令：
 ### `npm run eject`
 执行此命令，会根据源文件生成一些启动文件，项目初始化时执行一次即可；
@@ -109,10 +118,13 @@ Next轻量化，首屏响应时间只需要30ms左右，同等量级的页面首
 执行此命令，会先对项目进行编译，然后以生产模式启动项目，默认地址为[http://localhost:4000](http://localhost:4000)，如果项目是非windows-server,还可以支持负债均衡。（负载均衡源于Node.cluster的多进程实现，Windows的系统调度不支持这种方式，如果需要在Windows-Server下实现负载均衡，需要额外配置PM2和Nginx）。
 
 ### `npm run pro:m`
- 同上，只是启动的是mjs脚本
+同上，只是启动的是mjs脚本
 
 ### `npm run build`
 对项目执行编译，生成程序包。“npm run pro”的时候会默认执行一次build操作。
+
+### `npm run test`
+单元测试方案，需要单独再写实现
 
 ### other-cli
 其他命令可在package.json的scripts字段中进行配置。
@@ -172,7 +184,7 @@ export default class Index extends React.Component (
 
 ## Sass语法支持
   
-  可以在框架内直接写sass语法，并直接引入
+  可以在框架内直接写sass语法，并直接引入；
 
 
 
@@ -216,9 +228,9 @@ export default class Page extends React.component{
     monitor/
       monitor.mjs
     router/
-      user.mjs
+      reqtrans.mjs
   logs/
-  next/
+  next-server/
     next-server.mjs  
   pages/
     index.jsx
@@ -230,7 +242,9 @@ export default class Page extends React.component{
       request.js
     redux/
     scss/
+      index.scss
     view/
+      index.jsx
   static/
     pic/
     favicon.ico
