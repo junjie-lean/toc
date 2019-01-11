@@ -1,8 +1,8 @@
 /*
  * @Author: junjie.lean 
  * @Date: 2019-01-07 16:32:26 
- * @Last Modified by: lean
- * @Last Modified time: 2019-01-10 00:07:08
+ * @Last Modified by: junjie.lean
+ * @Last Modified time: 2019-01-10 16:18:41
  */
 
 /**
@@ -14,7 +14,6 @@ import axios from 'axios';
 import config from './../../config/config';
 const log = process.send ? process.send : console.log;
 const base = config.base;
-
 
 
 /**
