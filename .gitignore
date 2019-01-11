@@ -9,7 +9,7 @@
 # production
 /build
 /dist
-/.next
+/.toc
 
 # logs
 logs/**/*
