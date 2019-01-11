@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2019-01-07 21:46:14 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-11 11:32:03
+ * @Last Modified time: 2019-01-11 12:33:27
  */
 
 /**
@@ -52,8 +52,8 @@ let babelFileFun = (filepath) => {
                     if (err) {
                         console.log(err)
                     }
-                    // console.log('Delete the file:', path.basename(filepath))
                 })
+                console.log('Delete the file:', path.basename(filepath))
             }
         }
 
@@ -91,31 +91,6 @@ let babel = () => {
             item == "src" ||
             path.extname(item) == '.mjs'
     });
-    // dirList.map((item) => {
-    //     // console.log(item)
-    //     let stats = fs.statSync(path.join(cwd, item));
-    //     if (stats.isDirectory()) {
-    //         loop(path.join(cwd, item))
-    //         function loop(_path) {
-    //             let o = fs.statSync(_path)
-    //             if (o.isDirectory()) {
-    //                 let thisChildPath = fs.readdirSync(_path);
-    //                 thisChildPath.map((item) => {
-    //                     // console.log(path.join(_path,item))
-    //                     loop(path.join(_path, item))
-    //                 })
-    //             } else {
-    //                 if (path.extname(_path) == '.mjs') {
-    //                     babelFileFun(_path);
-    //                 }
-    //             }
-    //         }
-    //     } else {
-    //         babelFileFun(path.join(cwd, item))
-    //     }
-    // })
-
-    
     async.each(dirList, (item) => {
         let stats = fs.statSync(path.join(cwd, item));
         if (stats.isDirectory()) {
@@ -131,20 +106,21 @@ let babel = () => {
 async.series([
     (cb) => {
         confirm();
-        // console.log(1);
+        console.log(1);
         cb(null);
     },
     (cb) => {
-        // console.log(2);
+        console.log(2);
         cb();
     },
     (cb) => {
         babel();
-        // console.log(3);
+        console.log(3);
         cb(null);
     },
     (cb) => {
-        // console.log(4)
+        console.log(4)
+        signale.success('compile success')
         cb();
     }
 ])
