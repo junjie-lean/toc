@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-22 00:05:25 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-07 19:11:38
+ * @Last Modified time: 2019-01-11 09:40:45
  */
 
 /**
@@ -18,18 +18,21 @@ const { fetchData } = request;
 
 export default class IndexPage extends React.Component {
   static async getInitialProps({ req }) {
-    let data = await fetchData('/systeam/module/get', { isServer: req ? true : false }, req);
-    
-    return { '/get': data }
+    let data = await fetchData('/a', { isServer: req ? true : false }, req);
+    console.log('index.jsx /a',data)
+    return { '/a': data }
+    // return {}
   }
   constructor(props) {
     super(props)
   }
   componentDidMount() {
-    // console.log(this.props)s
+    // console.log(this.props)
     // fetchData('/systeam/module/get', {}, null).then((res) => {
     //   console.log("res:", res)
     // })
+    sessionStorage.token=123;
+    sessionStorage.orgcode=456;
   }
   render() {
     return (

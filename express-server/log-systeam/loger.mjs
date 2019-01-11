@@ -1,8 +1,8 @@
 /*
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:11:10 
- * @Last Modified by: junjie.lean
- * @Last Modified time: 2018-12-26 13:03:00
+ * @Last Modified by: lean
+ * @Last Modified time: 2019-01-08 22:40:06
  */
 
 /**
@@ -129,10 +129,5 @@ let errorLog = () => {
 router.use(infoLog());
 router.use(errorLog());
 
-router.post('*', (req, res, next) => {
-    return res.json({
-        result: true
-    })
-})
 
 export default router;

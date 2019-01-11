@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-22 00:08:54 
  * @Last Modified by: lean
- * @Last Modified time: 2018-12-22 00:10:36
+ * @Last Modified time: 2019-01-09 23:05:07
  */
 
 
@@ -24,7 +24,7 @@ const store = createStore(allReducer, composeWithDevTools(applyMiddleware(thunkM
 
 
 export default class Container extends React.Component {
-
+	
 	render() {
 		return (
 			<LocaleProvider locale={zh_CN}>

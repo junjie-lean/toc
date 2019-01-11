@@ -1,22 +1,25 @@
 /*
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:08:16 
- * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-08 16:22:59
+ * @Last Modified by: lean
+ * @Last Modified time: 2019-01-09 21:52:31
  */
 
 /**
- * 配置信息集合：
- * 介绍：configuration对象包含了基础配置/http日志配置/系统监控配置/请求接口监听配置；
- * 更改此文件时，需要重启系统使配置生效；
- * Warning : 如果不清楚此文件所描述的具体意义项，请勿随意更改配置。
+ * @description 配置信息集合：
+ * @description 介绍：configuration对象包含了基础配置/http日志配置/系统监控配置/请求接口监听配置；
+ * @description 更改此文件时，需要重启系统使配置生效；
+ * @Warning Warning : 如果不清楚此文件所描述的具体意义项，请勿随意更改配置。
  */
+
+const fs = require('fs');
+const path = require('path');
 
 module.exports = {
     /* base config */
     base: {
         /**
-         * warning：
+         * !!! warning
          * 此对象仅能做基础配置，
          * 此配置将暴露给前端，
          * 不可在此对象内填写服务器相关配置；
@@ -26,10 +29,12 @@ module.exports = {
         isDev: process.env.NODE_ENV == 'development',
         // { Number : 3000 } 开发环境服务端口
         devPort: 3000,
-        // { Number : 8080 } 生产环境服务端口,短端口可另外配Nginx做端口代理
-        proPort: 8080,
-        // { String : "URL" } 中间层接口地址
+        // { Number : 4000 } 生产环境服务端口,短端口可另外配Nginx做端口代理
+        proPort: 4000,
+        // { String : "URL" } 中间层接口地址，默认本服务
         virtualServiceURL: 'http://localhost:3000/',
+        // { String : "URL" } 后端接口地址
+        trueServiceURL: 'http://localhost:8080',
         // { Boolean : false } 是否需要多线程模式启动项目，默认false关闭，开启后可使用多线程模式启动项目，在多核CPU下可显著支持并发数。开发模式不建议启用，windows不支持。
         isCluster: false,
     },
@@ -48,7 +53,7 @@ module.exports = {
         maxFilesSize: '7d',
         // { Boolean : true } 是否启用滚屏显示http请求,仅dev模式有效
         needTailLog: false,
-        // { Boolean : false } 是否需要初始化清除log,仅dev模式有效
+        // { Boolean : false } 是否需要初始化清除一小时以前创建的log,仅dev模式有效
         needInitCleanLog: true
 
     },
@@ -73,9 +78,33 @@ module.exports = {
     /* api call listen config */
     apiListen: {
         // { Boolean : true } 是否启用接口转发模式
-        ajaxTransform: true,
-    }
+        ajaxTranspond: true,
+    },
     /**========================================================================================= */
+    /* create G.js */
+    createGlobalFile: (pr) => {
+        // console.log(pr);
+        let data = ` 
+/*
+* @Author: junjie.lean
+* @Date: 2018-12-22 00:08:05
+* @Last Modified by: lean
+* @Last Modified time: 2019-01-08 22:14:23
+*/
 
+/**
+* @description 针对前端的全局临时变量,此文件动态生成，
+* @description 对此文件的修改重启后会被覆盖，
+* @description 可修改"./../../config/config.js"的base属性
+*/
+
+let data=${JSON.stringify(pr)};
+
+export const G = JSON.parse(data);
+
+window.G = G;
+        `;
+        fs.writeFileSync(path.join(process.cwd(), 'src', 'js', 'g.js'), data, { encoding: 'utf8', flag: 'w+' })
+    }
 }
 

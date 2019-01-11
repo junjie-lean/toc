@@ -3,27 +3,22 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _express = require("express");
+var _express = _interopRequireDefault(require("express"));
 
-var _express2 = _interopRequireDefault(_express);
+var _expressStatusMonitor = _interopRequireDefault(require("express-status-monitor"));
 
-var _expressStatusMonitor = require("express-status-monitor");
-
-var _expressStatusMonitor2 = _interopRequireDefault(_expressStatusMonitor);
-
-var _config = require("./../../config/config");
-
-var _config2 = _interopRequireDefault(_config);
+var _config = _interopRequireDefault(require("./../../config/config"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var router = _express2.default.Router();
+var router = _express.default.Router();
 
 var option = {
-  title: _config2.default.systeamMonitor.pageTitle,
+  title: _config.default.systeamMonitor.pageTitle,
   theme: 'default.css',
-  path: _config2.default.systeamMonitor.pagePath,
+  path: _config.default.systeamMonitor.pagePath,
   spans: [{
     interval: 1,
     retention: 60
@@ -38,17 +33,18 @@ var option = {
     retention: 60
   }],
   chartVisibility: {
-    cpu: _config2.default.systeamMonitor.cpu,
-    mem: _config2.default.systeamMonitor.mem,
-    load: _config2.default.systeamMonitor.load,
-    responseTime: _config2.default.systeamMonitor.responseTime,
-    rps: _config2.default.systeamMonitor.rps,
-    statusCodes: _config2.default.systeamMonitor.statusCodes
+    cpu: _config.default.systeamMonitor.cpu,
+    mem: _config.default.systeamMonitor.mem,
+    load: _config.default.systeamMonitor.load,
+    responseTime: _config.default.systeamMonitor.responseTime,
+    rps: _config.default.systeamMonitor.rps,
+    statusCodes: _config.default.systeamMonitor.statusCodes
   }
 };
 
-if (_config2.default.systeamMonitor) {
-  router.use((0, _expressStatusMonitor2.default)(option));
+if (_config.default.systeamMonitor.needMonitor) {
+  router.use((0, _expressStatusMonitor.default)(option));
 }
 
-exports.default = router;
+var _default = router;
+exports.default = _default;
