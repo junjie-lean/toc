@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2019-01-07 21:46:14 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-11 12:33:27
+ * @Last Modified time: 2019-01-11 13:09:38
  */
 
 /**
@@ -21,8 +21,9 @@ const signale = require('signale');
 let cwd = process.cwd(); // ==> out path
 let NEED_BABEL_DIR = []
 let needDelete = false;
+
 let babelFileFun = (filepath) => {
-    if (!filepath || !path.isAbsolute(filepath) || path.extname(filepath) == ".js") {
+    if (!filepath || !path.isAbsolute(filepath) || path.extname(filepath) !== ".mjs") {
         return false
     }
     let item = path.basename(filepath)
@@ -65,13 +66,10 @@ let loop = (_path) => {
     if (o.isDirectory()) {
         let thisChildPath = fs.readdirSync(_path);
         thisChildPath.map((item) => {
-            // console.log(path.join(_path,item))
             loop(path.join(_path, item))
         })
     } else {
-        if (path.extname(_path) == '.mjs') {
-            babelFileFun(_path);
-        }
+        babelFileFun(_path);
     }
 }
 
@@ -79,8 +77,6 @@ let confirm = () => {
     let answer = readlineSync.keyInYN(`${chalk.bgRed(' Need to delete the source files after Babel is compiled? ')}`);
     if (answer) {
         needDelete = true;
-    } else {
-
     }
 }
 
@@ -92,35 +88,19 @@ let babel = () => {
             path.extname(item) == '.mjs'
     });
     async.each(dirList, (item) => {
-        let stats = fs.statSync(path.join(cwd, item));
-        if (stats.isDirectory()) {
-            loop(path.join(cwd, item))
-        } else {
-            babelFileFun(path.join(cwd, item))
-        }
+        loop(path.join(cwd, item));
     })
-
+    signale.success('compile success')
 }
-
 
 async.series([
     (cb) => {
         confirm();
-        console.log(1);
-        cb(null);
-    },
-    (cb) => {
-        console.log(2);
         cb();
     },
     (cb) => {
         babel();
-        console.log(3);
-        cb(null);
-    },
-    (cb) => {
-        console.log(4)
-        signale.success('compile success')
         cb();
     }
 ])
+
