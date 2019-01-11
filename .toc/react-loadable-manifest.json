@@ -957,7 +957,7 @@
       "publicPath": "static/chunks/commons.8c83be0a6fb0a485d1bc.js"
     }
   ],
-  "./adapters/http": [
+  "./adapters/xhr": [
     {
       "id": 120,
       "name": "./node_modules/axios/lib/adapters/xhr.js",

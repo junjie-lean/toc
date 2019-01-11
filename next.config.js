@@ -1,8 +1,10 @@
 /* eslint-disable */
 const withSass = require('@zeit/next-sass');
 
+
+
 module.exports = withSass({
-  webpack: (config,defaultConfig) => {
+  webpack: (config) => {
     config.module.rules.push(
       {
         test: /\.(swf|ttf|eot|svg|woff(2))(\?[a-z0-9]+)?$/,
@@ -23,8 +25,7 @@ module.exports = withSass({
     config.node = {
       fs: "empty"
     }
-    defaultConfig.config.distDir = ".toc"
-    console.log(defaultConfig.config.distDir)
     return config
-  }
+  },
+  distDir:".toc"
 });

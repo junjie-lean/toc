@@ -69,11 +69,11 @@
   },
   "chunks": {
     "byName": {
-      "static/droJNCtpLXEplfhTB_oQE/pages/_error.js": 0,
-      "static/droJNCtpLXEplfhTB_oQE/pages/helloWorld.js": 1,
-      "static/droJNCtpLXEplfhTB_oQE/pages/index.js": 2,
-      "static/droJNCtpLXEplfhTB_oQE/pages/_app.js": 3,
-      "static/droJNCtpLXEplfhTB_oQE/pages/_document.js": 4
+      "static/YeZosoURak9Wc9u~LARSg/pages/_error.js": 0,
+      "static/YeZosoURak9Wc9u~LARSg/pages/helloWorld.js": 1,
+      "static/YeZosoURak9Wc9u~LARSg/pages/index.js": 2,
+      "static/YeZosoURak9Wc9u~LARSg/pages/_app.js": 3,
+      "static/YeZosoURak9Wc9u~LARSg/pages/_document.js": 4
     },
     "bySource": {},
     "usedIds": [
