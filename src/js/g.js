@@ -12,7 +12,7 @@
 * @description 可修改"./../../config/config.js"的base属性
 */
 
-let data={"isDev":false,"devPort":3000,"proPort":4000,"virtualServiceURL":"http://localhost:3000/","trueServiceURL":"http://localhost:8080","isCluster":false};
+let data={"isDev":true,"devPort":3000,"proPort":4000,"virtualServiceURL":"http://localhost:3000/","trueServiceURL":"http://localhost:8080","isCluster":false};
 
 export const G = JSON.parse(data);
 

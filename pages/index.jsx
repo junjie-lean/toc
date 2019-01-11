@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-22 00:05:25 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-11 09:40:45
+ * @Last Modified time: 2019-01-11 09:46:22
  */
 
 /**
@@ -18,10 +18,10 @@ const { fetchData } = request;
 
 export default class IndexPage extends React.Component {
   static async getInitialProps({ req }) {
-    let data = await fetchData('/a', { isServer: req ? true : false }, req);
-    console.log('index.jsx /a',data)
-    return { '/a': data }
-    // return {}
+    // let data = await fetchData('/a', { isServer: req ? true : false }, req);
+    // console.log('index.jsx /a',data)
+    // return { '/a': data }
+    return {}
   }
   constructor(props) {
     super(props)
