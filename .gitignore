@@ -12,7 +12,7 @@
 /.toc
 
 # logs
-logs/**/*
+logs/**/* 
 # misc
 .DS_Store
 .env
