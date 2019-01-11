@@ -3,7 +3,7 @@ const withCss = require('@zeit/next-css');
 const withSass = require('@zeit/next-sass');
 
 module.exports = withSass({
-  webpack: (config, { defaultLoaders }) => {
+  webpack: (config, { defaultConfig }) => {
     config.module.rules.push(
       {
         test: /\.(swf|ttf|eot|svg|woff(2))(\?[a-z0-9]+)?$/,
@@ -23,7 +23,7 @@ module.exports = withSass({
       },
     )
     config.node = {
-      fs:"empty"
+      fs: "empty"
     }
     // config.output.path = `${__dirname}/.lean`
     return config
