@@ -15,7 +15,7 @@ import reqtrans from './../express-server/router/reqtrans';
 import logger from './../express-server/log-systeam/loger';
 import monitor from './../express-server/monitor/monitor';
 import bodyParser from 'body-parser';
-import config from './../config/config';
+import config from '../config/config';
 
 
 // console.log(config);
