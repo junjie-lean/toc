@@ -21,7 +21,7 @@ const signale = require('signale');
 
 let cwd = process.cwd(); // ==> out path
 let NEED_BABEL_DIR = []
-let needDelete = false;
+let needDelete = true; //! Dangerous operate
 let babelFileFun = (filepath) => {
     if (!filepath || !path.isAbsolute(filepath) || path.extname(filepath) == ".js") {
         return false
@@ -49,12 +49,12 @@ let babelFileFun = (filepath) => {
             console.log(code)
         } else {
             if (needDelete) {
-                // fs.unlink(filepath, (err) => {
-                //     if (err) {
-                //         console.log(err)
-                //     }
-                //     console.log('Delete the file:', path.basename(filepath))
-                // })
+                fs.unlink(filepath, (err) => {
+                    if (err) {
+                        console.log(err)
+                    }
+                    // console.log('Delete the file:', path.basename(filepath))
+                })
             }
         }
 
@@ -114,7 +114,7 @@ let babel = () => {
 //流程控制
 async.series([
     (cb) => {
-        confirm();
+        // confirm();
         cb(null);
     },
     (cb) => {
