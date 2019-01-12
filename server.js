@@ -4,7 +4,7 @@ var _cluster = _interopRequireDefault(require("cluster"));
 
 var _os = _interopRequireDefault(require("os"));
 
-var _nextServer = _interopRequireDefault(require("./next-server/next-server"));
+var _tocServer = _interopRequireDefault(require("./toc-server/toc-server"));
 
 var _fs = _interopRequireDefault(require("fs"));
 
@@ -51,10 +51,10 @@ var startCluster = function startCluster() {
         _cluster.default.fork();
       }
     } else {
-      (0, _nextServer.default)();
+      (0, _tocServer.default)();
     }
   } else {
-    (0, _nextServer.default)();
+    (0, _tocServer.default)();
   }
 };
 

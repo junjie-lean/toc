@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 09:25:32 
  * @Last Modified by: lean
- * @Last Modified time: 2019-01-09 21:40:54
+ * @Last Modified time: 2019-01-12 22:52:35
  */
 
 
@@ -13,7 +13,7 @@
 
 import cluster from 'cluster';
 import os from 'os';
-import startServer from './next-server/next-server';
+import startServer from './toc-server/toc-server';
 import fs from 'fs';
 import path from 'path';
 import config from './config/config';
