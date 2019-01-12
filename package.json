@@ -1,11 +1,11 @@
 {
   "name": "@junjie.lean/toc",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A Middleware-SSR Framework Based of NEXT and Express",
   "main": "server.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node  server.js",
-    "eject": "cross-env NODE_ENV=development node util/babel.js",
+    "eject": "cross-env NODE_ENV=development node util/eject.js",
     "pro": "npm run build && cross-env NODE_ENV=production node --no-warnings server.js",
     "build": "next build",
     "package": "",
@@ -29,6 +29,7 @@
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
+    "readline-sync": "^1.4.9",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.7",
     "redux-thunk": "^2.3.0",
