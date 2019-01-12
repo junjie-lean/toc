@@ -111,6 +111,7 @@ let babel = () => {
 }
 
 
+//流程控制
 async.series([
     (cb) => {
         confirm();
