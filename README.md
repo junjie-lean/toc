@@ -1,4 +1,4 @@
-# TOC.JS
+# TOC.JS
 
 ## What is toc.js?
 Toc.js is a Server Side Render framework based [NEXT](https://nextjs.org),toc.js can sopport：
@@ -77,13 +77,13 @@ Initial catalogs：
 Toc.js is based on NEXT, so React syntax can be used directly.
 
 
-### CSR-service
+### CSR-service
 In the case of Client Render,fetch the data in child-components.
 
 ### SSR-service
 When use the Server Render,please fetch data in this function (getInitialProps) which is in the page of Pages directory.
 
-### AjaxTranspond-service （be doing）
+### AjaxTranspond-service （be doing）
 You can choose UI library  whatever you want. you just need to convert you own back-end interface address to this service address,and then this service send the interface.
 
 ### Program performance monitoring
@@ -94,5 +94,3 @@ Configure a route in the config/config.js and check the system resourse that is 
 - command line
 - PM2
 - file packet（The future support）
-
-##new
