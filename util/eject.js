@@ -1,8 +1,8 @@
 /*
  * @Author: junjie.lean 
  * @Date: 2019-01-07 21:46:14 
- * @Last Modified by: lean
- * @Last Modified time: 2019-01-12 22:51:24
+ * @Last Modified by: junjie.lean
+ * @Last Modified time: 2019-01-14 13:02:00
  */
 
 /**
@@ -96,7 +96,7 @@ let babel = () => {
 //流程控制
 async.series([
     (cb) => {
-        confirm();
+        // confirm();
         cb(null);
     },
     (cb) => {
