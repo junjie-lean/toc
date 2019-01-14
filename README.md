@@ -96,3 +96,4 @@ In the case of client side rendering,fatch data in child-components;
 - PM2部署
 - 文件包方式部署（The future support）
 
+##new
