@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2019-01-07 21:46:14 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-14 13:02:00
+ * @Last Modified time: 2019-01-14 13:27:58
  */
 
 /**
@@ -20,7 +20,7 @@ const signale = require('signale');
 
 let cwd = process.cwd(); // ==> out path
 let NEED_BABEL_DIR = []
-let needDelete = false; //! Dangerous operate
+let needDelete = true; //! Dangerous operate
 let babelFileFun = (filepath) => {
     if (!filepath || !path.isAbsolute(filepath) || path.extname(filepath) !== ".mjs") {
         return false
