@@ -1,8 +1,8 @@
 /*
  * @Author: junjie.lean 
  * @Date: 2019-01-07 21:46:14 
- * @Last Modified by: lean
- * @Last Modified time: 2019-01-12 22:51:24
+ * @Last Modified by: junjie.lean
+ * @Last Modified time: 2019-01-14 13:27:58
  */
 
 /**
@@ -20,7 +20,7 @@ const signale = require('signale');
 
 let cwd = process.cwd(); // ==> out path
 let NEED_BABEL_DIR = []
-let needDelete = false; //! Dangerous operate
+let needDelete = true; //! Dangerous operate
 let babelFileFun = (filepath) => {
     if (!filepath || !path.isAbsolute(filepath) || path.extname(filepath) !== ".mjs") {
         return false
@@ -96,7 +96,7 @@ let babel = () => {
 //流程控制
 async.series([
     (cb) => {
-        confirm();
+        // confirm();
         cb(null);
     },
     (cb) => {
