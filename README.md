@@ -5,8 +5,8 @@ Toc.js is a Server Side Render framework based [NEXT](https://nextjs.org),toc.js
 
     - The conventional CSR Single page app；
     - The SSR Single page app;
-    - API transpond and 
-    - Web-server performance monitoring
+    - API transpond;
+    - Web-server performance monitoring;
     - Other more...
 
 toc means "Top Of Cloud";
@@ -14,17 +14,12 @@ toc means "Top Of Cloud";
 ## Installatioin
 The best way to create a toc app is that using the scaffold named [create-toc-app](https://www.npmjs.com/package/create-toc-app)!
 ```javascript
-
     npm install -g create-toc-app
-
 ```
 
 ## Project Initial
-
 ```javascript
-
     create-toc-app AppName
-
 ```
 Wait a moment,Ding~~!
 
