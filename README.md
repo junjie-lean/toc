@@ -90,7 +90,7 @@ You can choose UI library  whatever you want. you just need to convert you own b
 
 Configure a route in the `config/config.js ` and check the system resourse that is used by current procedure through asking for the address.
 
-## Hot to start
+## How to start
 
 首先，根据需求修改配置文件config/config.js，然后执行`npm run eject`,程序会自动生成启动脚本“server.js”，然后`npm run dev`即可。
 
