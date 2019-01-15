@@ -92,8 +92,10 @@ Configure a route in the `config/config.js ` and check the system resourse that 
 
 ## How to start
 
-首先，根据需求修改配置文件config/config.js，然后执行`npm run eject`,程序会自动生成启动脚本“server.js”，然后`npm run dev`即可。
-
+Steps:
+1. Configure the `config/config.js` 
+2. execute `npm run eject`,and then the procedure will automaticly create a start-up script `server.js`
+3. execute `npm run dev`
 
 ## Deploy
 - command line
@@ -101,6 +103,6 @@ Configure a route in the `config/config.js ` and check the system resourse that 
 - file packet（The future support）
 
 
-#### translate
+#### translator
 
-huangfang haungfang@qq.com
+593243536@qq.com
