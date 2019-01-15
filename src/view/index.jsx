@@ -1,8 +1,8 @@
 /*
  * @Author: junjie.lean
  * @Date: 2018-12-22 00:08:05
- * @Last Modified by: lean
- * @Last Modified time: 2019-01-09 21:20:57
+ * @Last Modified by: junjie.lean
+ * @Last Modified time: 2019-01-15 09:27:34
  */
 
 /**
@@ -14,9 +14,7 @@ import Link from 'next/link';
 import Container from '../components/container';
 import Router from 'next/router';
 import { Button } from 'antd';
-import Lifecycle from '../components/Lifecycle';
 import IndexScss from './../scss/index.scss';
-// import G from './../js/g';
 
 export default class Index extends React.Component {
   constructor(props) {

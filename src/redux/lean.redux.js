@@ -24,7 +24,6 @@ export const HeaderReducer = (state = initState, action) => {
 
 
 export const placeChange = (buildingId) => {
-    //axiox或者基于axios的请求方式
     return dispatch => {
         dispatch({
             type: PLACE_CHANGE,
