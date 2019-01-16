@@ -1,10 +1,10 @@
 # TOC.JS
 
 ## What is toc.js?
-Toc.js is a Server Side Render framework based [NEXT](https://nextjs.org),toc.js can sopport：
+Toc.js is a Server Side Render framework based [NEXT](https://nextjs.org),toc.js can support：
 
-    - The conventional CSR Single page app；
-    - The SSR Single page app;
+    - The conventional CSR Single app page；
+    - The SSR Single app page ;
     - API transpond;
     - Web-server performance monitoring;
     - Other more...
