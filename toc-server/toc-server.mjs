@@ -1,14 +1,3 @@
-/*
- * @Author: junjie.lean 
- * @Date: 2018-12-21 23:11:46 
- * @Last Modified by: lean
- * @Last Modified time: 2019-01-09 21:50:34
- */
-
-/**
- * @description next服务，负责服务端渲染的服务实现
- */
-
 import express from 'express';
 import next from 'next';
 import reqtrans from './../express-server/router/reqtrans';

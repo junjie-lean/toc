@@ -5,12 +5,13 @@
 
 # testing
 /coverage
-/uitl/alpha.js
+/util/alpha.js
 
 # production
 /build
 /dist
 /.toc
+
 
 # logs
 logs/**/*

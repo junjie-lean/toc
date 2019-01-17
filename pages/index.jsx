@@ -1,13 +1,4 @@
-/*
- * @Author: junjie.lean 
- * @Date: 2018-12-22 00:05:25 
- * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-16 17:10:09
- */
 
-/**
- * 页面级文件  文件名自动映射成路由
- */
 
 import React from 'react';
 import Index from '../src/view/index';

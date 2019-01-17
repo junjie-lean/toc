@@ -1,14 +1,3 @@
-/*
- * @Author: junjie.lean 
- * @Date: 2018-12-22 00:08:54 
- * @Last Modified by: lean
- * @Last Modified time: 2019-01-09 23:05:07
- */
-
-
-/**
- * 全局容器组件
- */
 
 import React, { PureComponent } from 'react';
 import Head from './head';

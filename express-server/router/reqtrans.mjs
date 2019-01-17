@@ -1,15 +1,3 @@
-/*
- * @Author: junjie.lean 
- * @Date: 2018-12-22 00:03:02 
- * @Last Modified by: lean
- * @Last Modified time: 2019-01-10 00:24:36
- */
-
-
-/**
- * @description 在next中使用expres.Router()的实例：
- * 
- */
 
 import express from 'express';
 import config from '../../config/config';
