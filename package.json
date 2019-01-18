@@ -2,14 +2,15 @@
   "name": "@junjie.lean/toc",
   "version": "0.1.3",
   "description": "A Middleware-SSR Framework Based of NEXT and Express",
-  "main": "server.js",
-  "bin":"server.js",
+  "main": "pkg.js",
+  "bin": "pkg.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node  server.js",
     "eject": "cross-env NODE_ENV=development node util/eject.js",
     "pro": "npm run build && cross-env NODE_ENV=production node --no-warnings server.js",
     "build": "next build",
-    "dist": "pkg . -t win --out-dir dist ",
+    "dist:macos": "pkg . -t macos --out-dir dist --debug ",
+    "dist:win": "pkg . -t win --out-dir dist --debug",
     "test": "jest"
   },
   "dependencies": {
@@ -37,8 +38,6 @@
     "request": "^2.88.0",
     "sass-loader": "^7.1.0",
     "signale": "^1.3.0",
-    "styled-jsx": "^3.1.3",
-    "styled-jsx-plugin-sass": "^1.0.0",
     "url-loader": "^1.1.2",
     "winston": "^3.1.0",
     "winston-daily-rotate-file": "^3.5.1"

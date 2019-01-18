@@ -45,7 +45,7 @@ export default class Index extends React.Component {
             <br />
             {/* <img src={CSR} /> */}
             {/* <img src='/static/pic/csr.png' /> */}
-            <Lifecycle name={this.state.name} />
+            {/* <Lifecycle name={this.state.name} /> */}
           </div>
         </div>
       </Container>

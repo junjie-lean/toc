@@ -90,7 +90,14 @@ export const G = JSON.parse(data);
 
 window.G = G;
         `;
-        fs.writeFileSync(path.join(process.cwd(), 'src', 'js', 'g.js'), data, { encoding: 'utf8', flag: 'w+' })
+        fs.writeFileSync(
+            path.join(process.cwd(), 
+            // path.join( __dirname,'..',
+            'src',
+            'js',
+            'g.js'),
+             data,
+            { encoding: 'utf8', flag: 'w+' })
     }
 }
 
