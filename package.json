@@ -9,6 +9,7 @@
     "eject": "cross-env NODE_ENV=development node util/eject.js",
     "pro": "npm run build && cross-env NODE_ENV=production node --no-warnings server.js",
     "build": "next build",
+    "dist:macos":"npm run build && pkg . -t macos --out-path dist",
     "test": "jest"
   },
   "dependencies": {
