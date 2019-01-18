@@ -1,6 +1,6 @@
 {
   "name": "@junjie.lean/toc",
-  "version": "0.1.3",
+  "version": "0.2.1",
   "description": "A Middleware-SSR Framework Based of NEXT and Express",
   "main": "server.js",
   "bin":"server.js",
