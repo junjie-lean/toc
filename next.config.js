@@ -27,7 +27,7 @@ module.exports = withSass({
     }
     return config
   },
-  distDir:".toc",
+  distDir:"build",
   generateEtags:false,
   pageExtensions:['jsx','js']
 });
