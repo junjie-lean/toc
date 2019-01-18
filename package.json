@@ -9,8 +9,8 @@
     "eject": "cross-env NODE_ENV=development node util/eject.js",
     "pro": "npm run build && cross-env NODE_ENV=production node --no-warnings server.js",
     "build": "next build",
-    "dist:macos": "pkg . -t macos --out-dir dist --debug ",
-    "dist:win": "pkg . -t win --out-dir dist --debug",
+    "dist:macos": "npm run build && pkg . -t macos --out-dir dist --debug ",
+    "dist:win": "npm run build && pkg . -t win --out-dir dist --debug",
     "test": "jest"
   },
   "dependencies": {
@@ -71,10 +71,10 @@
   },
   "pkg": {
     "assets": [
-      ".toc/**/*"
+      "build/**/*"
     ],
     "scripts": [
-      ".toc/server/**/*.js"
+      "build/server/**/*.js"
     ]
   },
   "repository": "https://github.com/junjie-lean/toc.js",
