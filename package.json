@@ -74,10 +74,11 @@
   },
   "pkg": {
     "assets": [
-      ".toc/**/*"
+      "build/**/*",
+      "static/**/*"
     ],
     "scripts": [
-      ".toc/server/**/*.js"
+      "build/server/**/*.js"
     ]
   },
   "repository": "https://github.com/junjie-lean/toc.js",
