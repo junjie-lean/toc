@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:11:46 
  * @Last Modified by: lean
- * @Last Modified time: 2019-01-09 21:50:34
+ * @Last Modified time: 2019-01-25 00:00:22
  */
 
 /**
@@ -16,14 +16,15 @@ import logger from './../express-server/log-systeam/loger';
 import monitor from './../express-server/monitor/monitor';
 import bodyParser from 'body-parser';
 import config from '../config/config';
-
+import nextConfig from './../next.config';
 
 // console.log(config);
 const base = config.base;
 const port = base.isDev ? base.devPort : base.proPort;
 const dev = base.isDev;
 const app = next({
-    dev
+    dev,
+    conf: nextConfig
 });
 const handle = app.getRequestHandler();
 
@@ -31,7 +32,9 @@ let startServer = () => {
     app.prepare().then(() => {
         const server = express();
         server.use(bodyParser.json());
-        server.use(bodyParser.urlencoded({ extended: true }));
+        server.use(bodyParser.urlencoded({
+            extended: true
+        }));
 
         //日志中间件
         server.use(logger);
