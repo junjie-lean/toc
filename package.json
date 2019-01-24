@@ -78,6 +78,6 @@
       ".toc/server/**/*.js"
     ]
   },
-  "repository": "https://github.com/junjie-lean/falseworkWithNext7",
+  "repository": "https://github.com/junjie-lean/toc.js",
   "license": "MIT"
 }

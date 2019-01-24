@@ -90,7 +90,19 @@ You can choose UI library  whatever you want. you just need to convert you own b
 
 Configure a route in the `config/config.js ` and check the system resourse that is used by current procedure through asking for the address.
 
+## How to start
+
+Steps:
+1. Configure the `config/config.js` 
+2. execute `npm run eject`,and then the procedure will automaticly create a start-up script `server.js`
+3. execute `npm run dev`
+
 ## Deploy
 - command line
 - PM2
 - file packet（The future support）
+
+
+#### translator
+
+593243536@qq.com
