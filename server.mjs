@@ -1,16 +1,3 @@
-/*
- * @Author: junjie.lean 
- * @Date: 2018-12-21 09:25:32 
- * @Last Modified by: lean
- * @Last Modified time: 2019-01-12 22:52:35
- */
-
-
-/**
- * 本文件执行命令： node、nodemon 
- * 本文件执行参数： --experimental-modules
- */
-
 import cluster from 'cluster';
 import os from 'os';
 import startServer from './toc-server/toc-server';

@@ -1,16 +1,3 @@
-/*
- * @Author: junjie.lean 
- * @Date: 2018-12-21 23:11:10 
- * @Last Modified by: lean
- * @Last Modified time: 2019-01-08 22:40:06
- */
-
-/**
- * 集成Winston日志系统
- * 
- */
-
-
 import express from 'express';
 import winston from 'winston';
 import expressWinston from 'express-winston';

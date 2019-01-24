@@ -5,11 +5,13 @@
 
 # testing
 /coverage
+/util/alpha.js
 
 # production
 build
 dist/**/*
 .toc
+
 
 # logs
 logs/**/*
@@ -21,6 +23,7 @@ logs/**/*
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*-lock.json
 yarn.lock*
 *.tmp
 *.bak
