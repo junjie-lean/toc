@@ -9,7 +9,8 @@
     "eject": "cross-env NODE_ENV=development node util/eject.js",
     "pro": "npm run build && cross-env NODE_ENV=production node --no-warnings server.js",
     "build": "next build",
-    "dist": "pkg . -t win --out-dir dist ",
+    "dist:win": "pkg . -t win --out-dir dist --debug --no-warning ",
+    "dist:macos": "pkg . -t macos --out-dir dist --debug --no-warning",
     "test": "jest"
   },
   "dependencies": {
@@ -48,6 +49,7 @@
     "@babel/core": "^7.2.2",
     "@babel/plugin-transform-modules-commonjs": "^7.2.0",
     "babel-preset-minify": "^0.5.0",
+    "babel-register": "^6.26.0",
     "jest": "^23.6.0",
     "pkg": "^4.3.7"
   },

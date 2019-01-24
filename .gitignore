@@ -7,9 +7,9 @@
 /coverage
 
 # production
-/build
-/dist
-/.toc
+build
+dist/**/*
+.toc
 
 # logs
 logs/**/*
