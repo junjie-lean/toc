@@ -19,13 +19,15 @@ var _bodyParser = _interopRequireDefault(require("body-parser"));
 
 var _config = _interopRequireDefault(require("../config/config"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var nextConfig = require('./../next.config');
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var base = _config.default.base;
 var port = base.isDev ? base.devPort : base.proPort;
 var dev = base.isDev;
 var app = (0, _next.default)({
-  dev: dev
+  dev: dev,
+  conf:nextConfig
 });
 var handle = app.getRequestHandler();
 
