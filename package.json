@@ -73,8 +73,7 @@
   },
   "pkg": {
     "assets": [
-      "build/**/*",
-      "static/**/*"
+      "build/*"
     ],
     "scripts": [
       "biuld/server/**/*.js"
