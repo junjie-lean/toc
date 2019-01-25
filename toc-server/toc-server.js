@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:11:46 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-25 10:00:48
+ * @Last Modified time: 2019-01-25 10:45:09
  */
 
 /**
@@ -17,14 +17,12 @@ const config = require('../config/config');
 const reqtrans = require('./../express-server/router/reqtrans');
 const logger = require('./../express-server/log-systeam/loger');
 const monitor = require('./../express-server/monitor/monitor');
-const nextConfig = require('../next.config');
 
 const base = config.base;
 const port = base.isDev ? base.devPort : base.proPort;
 const dev = base.isDev;
 const app = next({
     dev,
-    conf: nextConfig
 });
 const handle = app.getRequestHandler();
 
@@ -52,5 +50,5 @@ let startServer = () => {
         });
     })
 }
-
+// startServer()
 module.exports = startServer;

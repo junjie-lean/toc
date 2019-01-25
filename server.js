@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 09:25:32 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-25 10:00:22
+ * @Last Modified time: 2019-01-25 10:21:20
  */
 
 
@@ -23,7 +23,6 @@ const config = require('./config/config');
 const osType = process.platform;
 const dev = config.base.isDev;
 const needClearLog = config.log.needInitCleanLog;
-
 
 let cleanLog = () => {
     if (dev && needClearLog) {

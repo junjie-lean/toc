@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2019-01-07 16:32:26 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-25 10:03:15
+ * @Last Modified time: 2019-01-25 10:37:02
  */
 
 /**
@@ -14,7 +14,6 @@ const axios = require('axios');
 const config = require('../../config/config');
 const log = process.send ? process.send : console.log;
 const base = config.base;
-
 
 /**
  * @description 根据配置设置后端接口地址
