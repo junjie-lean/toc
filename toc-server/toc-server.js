@@ -1,29 +1,30 @@
 /*
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:11:46 
- * @Last Modified by: lean
- * @Last Modified time: 2019-01-09 21:50:34
+ * @Last Modified by: junjie.lean
+ * @Last Modified time: 2019-01-25 10:00:48
  */
 
 /**
  * @description next服务，负责服务端渲染的服务实现
  */
 
-import express from 'express';
-import next from 'next';
-import reqtrans from './../express-server/router/reqtrans';
-import logger from './../express-server/log-systeam/loger';
-import monitor from './../express-server/monitor/monitor';
-import bodyParser from 'body-parser';
-import config from '../config/config';
 
+const express = require('express');
+const next = require('next');
+const bodyParser = require('body-parser');
+const config = require('../config/config');
+const reqtrans = require('./../express-server/router/reqtrans');
+const logger = require('./../express-server/log-systeam/loger');
+const monitor = require('./../express-server/monitor/monitor');
+const nextConfig = require('../next.config');
 
-// console.log(config);
 const base = config.base;
 const port = base.isDev ? base.devPort : base.proPort;
 const dev = base.isDev;
 const app = next({
-    dev
+    dev,
+    conf: nextConfig
 });
 const handle = app.getRequestHandler();
 
@@ -41,12 +42,6 @@ let startServer = () => {
         server.use(reqtrans);
 
         server.get('*', (req, res, next) => {
-            // switch (pathname) {
-            //     case "": {
-            //     }
-            //     default: {
-            //     }
-            // }
             return handle(req, res);
         });
         server.listen(port, err => {
@@ -58,4 +53,4 @@ let startServer = () => {
     })
 }
 
-export default startServer;
+module.exports = startServer;

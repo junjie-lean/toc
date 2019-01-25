@@ -1,8 +1,8 @@
 /*
  * @Author: junjie.lean 
  * @Date: 2018-12-21 09:25:32 
- * @Last Modified by: lean
- * @Last Modified time: 2019-01-12 22:52:35
+ * @Last Modified by: junjie.lean
+ * @Last Modified time: 2019-01-25 10:00:22
  */
 
 
@@ -11,17 +11,19 @@
  * 本文件执行参数： --experimental-modules
  */
 
-import cluster from 'cluster';
-import os from 'os';
-import startServer from './toc-server/toc-server';
-import fs from 'fs';
-import path from 'path';
-import config from './config/config';
-import async from 'async';
-import chalk from 'chalk';
+const cluster = require('cluster');
+const path = require('path');
+const os = require('os');
+const fs = require('fs');
+const chalk = require('chalk');
+const async = require('async');
+const startServer = require('./toc-server/toc-server');
+const config = require('./config/config');
+
 const osType = process.platform;
 const dev = config.base.isDev;
 const needClearLog = config.log.needInitCleanLog;
+
 
 let cleanLog = () => {
     if (dev && needClearLog) {
@@ -63,7 +65,7 @@ let startCluster = () => {
 }
 
 async.series([
-    (callback)=>{
+    (callback) => {
         //g.js写入操作
         config.createGlobalFile(config.base);
         callback();
@@ -76,7 +78,7 @@ async.series([
         startCluster();
         callback();
     },
-    (callback)=>{
+    (callback) => {
         callback();
     }
 ])
