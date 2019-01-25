@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+=======
+/*
+ * @Author: junjie.lean
+ * @Date: 2018-12-22 00:08:05
+ * @Last Modified by: lean
+ * @Last Modified time: 2019-01-25 00:02:29
+ */
+
+/**
+ * 页面级的组件
+ */
+>>>>>>> 7b87a45fc5f07938e6a8a8f303c8ac237a3bdc29
 
 import React from 'react';
 import Link from 'next/link';
@@ -19,11 +32,7 @@ export default class Index extends React.Component {
     Router.push('/lean');
   }
 
-  addOne = () => {
-    this.setState({
-      name: this.state.name + 1
-    })
-  }
+  
   componentDidMount(){
     // console.log(G)
   }
@@ -43,9 +52,7 @@ export default class Index extends React.Component {
               <Button>Link方式触发跳转</Button>
             </Link> */}
             <br />
-            {/* <img src={CSR} /> */}
             {/* <img src='/static/pic/csr.png' /> */}
-            <Lifecycle name={this.state.name} />
           </div>
         </div>
       </Container>

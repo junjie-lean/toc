@@ -8,9 +8,9 @@
 /util/alpha.js
 
 # production
-/build
-/dist
-/.toc
+build
+dist/**/*
+.toc
 
 
 # logs
