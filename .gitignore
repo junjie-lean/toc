@@ -11,6 +11,8 @@
 /dist
 /.toc
 /.next
+
+
 # logs
 logs/**/*
  
