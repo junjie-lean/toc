@@ -1,26 +1,13 @@
-/*
- * @Author: junjie.lean 
- * @Date: 2018-12-21 23:11:10 
- * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-25 10:02:34
- */
-
-/**
- * 集成Winston日志系统
- * 
- */
-
-
-
-const path = require('path');
-const express = require('express');
-const winston = require('winston');
-const expressWinston = require('express-winston');
-const config = require('../../config/config');
+import express from 'express';
+import winston from 'winston';
+import expressWinston from 'express-winston';
+import 'winston-daily-rotate-file';
+import path from 'path';
+import config from './../../config/config';
 const router = express.Router();
-require('winston-daily-rotate-file');
 
 let isDev = config.base.isDev;
+
 let needLoger = config.log.needLoger;
 let logFilePrefix = config.log.logFilePrefix;
 let needZipLog = config.log.needZipLog;
@@ -126,8 +113,8 @@ let errorLog = () => {
     }
 }
 
-router.use(infoLog);
-router.use(errorLog);
+router.use(infoLog());
+router.use(errorLog());
 
 
-module.exports = router;
+export default router;

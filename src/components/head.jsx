@@ -1,13 +1,3 @@
-/*
- * @Author: junjie.lean 
- * @Date: 2018-12-22 00:08:54 
- * @Last Modified by: lean
- * @Last Modified time: 2018-12-22 00:09:56
- */
-
-/**
- * 相当于HTML文件的header，静态文件可以在此处引入
- */
 
 import React from 'react';
 import NextHead from 'next/head';

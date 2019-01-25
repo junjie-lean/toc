@@ -1,13 +1,3 @@
-/*
- * @Author: junjie.lean 
- * @Date: 2019-01-07 21:46:14 
- * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-14 13:27:58
- */
-
-/**
- * @description 对node语法进行降级编译
- */
 
 const path = require('path');
 const cp = require('child_process');

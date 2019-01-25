@@ -1,4 +1,3 @@
-/* eslint-disable */
 const withSass = require('@zeit/next-sass');
 
 module.exports = withSass({
@@ -25,7 +24,7 @@ module.exports = withSass({
     }
     return config
   },
-  // distDir:".toc",
+  distDir:"build",
   generateEtags:false,
   pageExtensions:['jsx','js']
 });
