@@ -10,7 +10,7 @@
 /build
 /dist
 /.toc
-
+/.next
 # logs
 logs/**/*
  
