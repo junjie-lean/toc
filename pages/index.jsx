@@ -10,7 +10,7 @@ const { fetchData } = request;
 export default class IndexPage extends React.Component {
   static async getInitialProps({ req }) {
     // let data = await fetchData('/a', { isServer: req ? true : false }, req);
-    // console.log('index.jsx /a',data)
+    // console.log('index.jsx /a', data)
     // return { '/a': data }
     return {}
   }
@@ -22,8 +22,8 @@ export default class IndexPage extends React.Component {
     // fetchData('/systeam/module/get', {}, null).then((res) => {
     //   console.log("res:", res)
     // })
-    sessionStorage.token=123;
-    sessionStorage.orgcode=456;
+    sessionStorage.token = 123;
+    sessionStorage.orgcode = 456;
   }
   render() {
     return (
@@ -36,3 +36,4 @@ export default class IndexPage extends React.Component {
     )
   }
 }
+

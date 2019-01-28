@@ -1,7 +1,20 @@
+/*
+ * @Author: junjie.lean 
+ * @Date: 2018-12-22 00:03:02 
+ * @Last Modified by: junjie.lean
+ * @Last Modified time: 2019-01-28 11:02:02
+ */
 
-import express from 'express';
-import config from '../../config/config';
-import request from '../../src/js/request';
+
+/**
+ * @description 在next中使用expres.Router()的实例：
+ * 
+ */
+
+
+const express = require('express');
+const config = require('../../config/config');
+const request = require('./../../src/js/request');
 const router = express.Router();
 const needTranspondApi = config.apiListen.ajaxTranspond;
 
@@ -11,7 +24,7 @@ const needTranspondApi = config.apiListen.ajaxTranspond;
 //     res.send(req.params)
 // })
 
-const _transAjax = request.transAjax;
+const _transAjax = request.default.transAjax;
 router.all('*', (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, OPTIONS');
@@ -42,22 +55,22 @@ router.post('*', (req, res, next) => {
             if (response.status == 200 && response.statusText == "OK") {
                 return res.json({
                     result: true,
-                    status:200,
-                    message:'ok',
+                    status: 200,
+                    message: 'ok',
                     data: response.data
                 })
             } else {
                 return res.json({
                     result: false,
-                    status:200,
-                    message:'not ok',
+                    status: 200,
+                    message: 'not ok',
                 })
             }
         }).catch((err) => {
             return res.json({
                 result: false,
-                status:500,
-                message:"error",
+                status: 500,
+                message: "error",
                 err: err
             })
         })
@@ -65,4 +78,4 @@ router.post('*', (req, res, next) => {
         next();
     }
 })
-export default router
+module.exports = router;
