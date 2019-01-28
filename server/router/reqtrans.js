@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-22 00:03:02 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-28 10:06:31
+ * @Last Modified time: 2019-01-28 11:02:02
  */
 
 
@@ -24,7 +24,7 @@ const needTranspondApi = config.apiListen.ajaxTranspond;
 //     res.send(req.params)
 // })
 
-const _transAjax = request.transAjax;
+const _transAjax = request.default.transAjax;
 router.all('*', (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, OPTIONS');

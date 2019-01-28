@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-22 00:05:25 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-11 09:46:22
+ * @Last Modified time: 2019-01-28 10:57:43
  */
 
 /**
@@ -16,12 +16,14 @@ import request from './../src/js/request.js';
 // import { Button } from 'antd';
 const { fetchData } = request;
 
+console.log(request);
+console.log(fetchData);
 export default class IndexPage extends React.Component {
   static async getInitialProps({ req }) {
-    // let data = await fetchData('/a', { isServer: req ? true : false }, req);
-    // console.log('index.jsx /a',data)
-    // return { '/a': data }
-    return {}
+    let data = await fetchData('/a', { isServer: req ? true : false }, req);
+    console.log('index.jsx /a', data)
+    return { '/a': data }
+    // return {}
   }
   constructor(props) {
     super(props)
@@ -31,8 +33,8 @@ export default class IndexPage extends React.Component {
     // fetchData('/systeam/module/get', {}, null).then((res) => {
     //   console.log("res:", res)
     // })
-    sessionStorage.token=123;
-    sessionStorage.orgcode=456;
+    sessionStorage.token = 123;
+    sessionStorage.orgcode = 456;
   }
   render() {
     return (
@@ -45,3 +47,4 @@ export default class IndexPage extends React.Component {
     )
   }
 }
+

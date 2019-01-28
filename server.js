@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 09:25:32 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-28 10:16:07
+ * @Last Modified time: 2019-01-28 10:34:55
  */
 
 
@@ -13,7 +13,7 @@ const path = require('path');
 const async = require('async');
 const chalk = require('chalk');
 const config = require('./config/config');
-const startServer = require('./express-server/next/next-server');
+const startServer = require('./server/next/next-server');
 const osType = process.platform;
 const dev = config.base.isDev;
 const needClearLog = config.log.needInitCleanLog;

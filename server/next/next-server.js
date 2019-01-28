@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:11:46 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-28 10:17:06
+ * @Last Modified time: 2019-01-28 10:24:59
  */
 
 /**
@@ -55,5 +55,5 @@ let startServer = () => {
         });
     })
 }
-startServer()
+// startServer()
 module.exports = startServer;
