@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2019-01-07 16:32:26 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-10 16:18:41
+ * @Last Modified time: 2019-01-28 10:11:11
  */
 
 /**
@@ -10,12 +10,10 @@
  * 可以走中间层转发，也可以直接请求后端真实接口
  */
 
-import axios from 'axios';
-import config from './../../config/config';
+const axios = require('axios');
+const config = require('./../../config/config');
 const log = process.send ? process.send : console.log;
 const base = config.base;
-
-
 /**
  * @description 根据配置设置后端接口地址
  * @description 开启转发模式时，地址为中间层转发地址
@@ -194,12 +192,12 @@ const SPECIAL_fetchData = async (
 const transAjax = async (method, pr) => {
     console.log('before transpond ajax')
     let data = await axios.post(method, pr, {
-        baseURL: base.trueServiceURL +"/api"
+        baseURL: base.trueServiceURL + "/api"
     });
     return data
 }
 
-export default {
+module.exports = {
     getQueryString,
     createParamInServer,
     createParamInClient,

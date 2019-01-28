@@ -1,27 +1,23 @@
 /*
  * @Author: junjie.lean 
  * @Date: 2018-12-21 09:25:32 
- * @Last Modified by: lean
- * @Last Modified time: 2019-01-09 21:40:54
+ * @Last Modified by: junjie.lean
+ * @Last Modified time: 2019-01-28 10:16:07
  */
 
 
-/**
- * 本文件执行命令： node、nodemon 
- * 本文件执行参数： --experimental-modules
- */
-
-import cluster from 'cluster';
-import os from 'os';
-import startServer from './next-server/next-server';
-import fs from 'fs';
-import path from 'path';
-import config from './config/config';
-import async from 'async';
-import chalk from 'chalk';
+const cluster = require('cluster');
+const os = require('os');
+const fs = require('fs');
+const path = require('path');
+const async = require('async');
+const chalk = require('chalk');
+const config = require('./config/config');
+const startServer = require('./express-server/next/next-server');
 const osType = process.platform;
 const dev = config.base.isDev;
 const needClearLog = config.log.needInitCleanLog;
+
 
 let cleanLog = () => {
     if (dev && needClearLog) {
@@ -61,22 +57,14 @@ let startCluster = () => {
         startServer()
     }
 }
-
-async.series([
-    (callback)=>{
-        //g.js写入操作
-        config.createGlobalFile(config.base);
-        callback();
-    },
-    (callback) => {
-        cleanLog();
-        callback();
-    },
-    (callback) => {
-        startCluster();
-        callback();
-    },
-    (callback)=>{
-        callback();
-    }
-])
+startServer()
+// async.series([
+//     (callback) => {
+//         cleanLog();
+//         callback();
+//     },
+//     (callback) => {
+//         startCluster();
+//         callback();
+//     }
+// ])

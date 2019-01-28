@@ -5,7 +5,6 @@
   "main": "server.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node  server.js",
-    "eject": "cross-env NODE_ENV=development node util/babel.js",
     "pro": "npm run build && cross-env NODE_ENV=production node --no-warnings server.js",
     "build": "next build",
     "test": "jest"

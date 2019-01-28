@@ -1,24 +1,22 @@
 /*
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:11:46 
- * @Last Modified by: lean
- * @Last Modified time: 2019-01-09 21:50:34
+ * @Last Modified by: junjie.lean
+ * @Last Modified time: 2019-01-28 10:17:06
  */
 
 /**
  * @description next服务，负责服务端渲染的服务实现
  */
 
-import express from 'express';
-import next from 'next';
-import reqtrans from './../express-server/router/reqtrans';
-import logger from './../express-server/log-systeam/loger';
-import monitor from './../express-server/monitor/monitor';
-import bodyParser from 'body-parser';
-import config from './../config/config';
+const express = require('express');
+const next = require('next');
+const bodyParser = require('body-parser');
+const config = require('./../../config/config');
+const reqtrans = require('./../router/reqtrans');
+const logger = require('./../log-systeam/loger');
+const monitor = require('./../monitor/monitor');
 
-
-// console.log(config);
 const base = config.base;
 const port = base.isDev ? base.devPort : base.proPort;
 const dev = base.isDev;
@@ -57,5 +55,5 @@ let startServer = () => {
         });
     })
 }
-
-export default startServer;
+startServer()
+module.exports = startServer;
