@@ -3,14 +3,19 @@
   "version": "0.2.1",
   "description": "A Middleware-SSR Framework Based of NEXT and Express",
   "main": "server.js",
-  "bin": "server.js",
+  "bin":"server.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node  server.js",
     "eject": "cross-env NODE_ENV=development node util/eject.js",
     "pro": "npm run build && cross-env NODE_ENV=production node --no-warnings server.js",
     "build": "next build",
+<<<<<<< HEAD
     "dist:win": "pkg . -t win --out-dir dist --debug --no-warning ",
     "dist:macos": "pkg . -t macos --out-dir dist --debug --no-warning",
+=======
+    "dist:macos":"npm run build && pkg . -t macos --out-path dist --debug --no-warning",
+    "dist:win":"npm run build && pkg . -t win --out-path dist --debug --no-warning",
+>>>>>>> fe682e2add9db6edd0d2536041e9c47e5bcbe3a4
     "test": "jest"
   },
   "dependencies": {
@@ -49,7 +54,6 @@
     "@babel/core": "^7.2.2",
     "@babel/plugin-transform-modules-commonjs": "^7.2.0",
     "babel-preset-minify": "^0.5.0",
-    "babel-register": "^6.26.0",
     "jest": "^23.6.0",
     "pkg": "^4.3.7"
   },
@@ -78,7 +82,7 @@
       "static/**/*"
     ],
     "scripts": [
-      "build/server/**/*.js"
+      "biuld/server/**/*.js"
     ]
   },
   "repository": "https://github.com/junjie-lean/toc.js",
