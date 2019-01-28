@@ -429,8 +429,4 @@ var _default = {
   SPECIAL_fetchData: SPECIAL_fetchData,
   transAjax: transAjax
 };
-<<<<<<< .merge_file_GKsPw7
 exports.default = _default;
-=======
-exports.default = _default;
->>>>>>> .merge_file_Yx3EQU
