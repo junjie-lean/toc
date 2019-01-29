@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-22 00:03:02 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-28 11:02:02
+ * @Last Modified time: 2019-01-29 17:14:01
  */
 
 
@@ -13,6 +13,7 @@
 
 
 const express = require('express');
+const midStatic = require('mid-api-statics');
 const config = require('../../config/config');
 const request = require('./../../src/js/request');
 const router = express.Router();

@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 23:11:46 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-28 10:24:59
+ * @Last Modified time: 2019-01-29 14:52:30
  */
 
 /**
@@ -14,7 +14,7 @@ const next = require('next');
 const bodyParser = require('body-parser');
 const config = require('./../../config/config');
 const reqtrans = require('./../router/reqtrans');
-const logger = require('./../log-systeam/loger');
+const logger = require('./../log/loger');
 const monitor = require('./../monitor/monitor');
 
 const base = config.base;
