@@ -2,7 +2,7 @@
  * @Author: junjie.lean 
  * @Date: 2018-12-21 09:25:32 
  * @Last Modified by: junjie.lean
- * @Last Modified time: 2019-01-28 10:34:55
+ * @Last Modified time: 2019-01-29 09:53:18
  */
 
 
@@ -57,14 +57,14 @@ let startCluster = () => {
         startServer()
     }
 }
-startServer()
-// async.series([
-//     (callback) => {
-//         cleanLog();
-//         callback();
-//     },
-//     (callback) => {
-//         startCluster();
-//         callback();
-//     }
-// ])
+// startServer()
+async.series([
+    (callback) => {
+        cleanLog();
+        callback();
+    },
+    (callback) => {
+        startCluster();
+        callback();
+    }
+])
