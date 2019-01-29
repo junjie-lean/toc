@@ -30,14 +30,14 @@ Initial catalogs：
     config.js
   express-server/
     log-systeam/
-      loger.mjs
+      loger.js
     monitor/
-      monitor.mjs
+      monitor.js
     router/
-      reqtrans.mjs
+      reqtrans.js
+    next/
+      next-server.js
   logs/
-  toc-server/
-    toc-server.mjs  
   pages/
     index.jsx
     helloWorld.jsx
@@ -62,7 +62,7 @@ Initial catalogs：
   next.config.js
   package.json
   README.md
-  server.mjs
+  server.js
 ```
 
 
@@ -79,7 +79,7 @@ In the case of Client Render,fetch the data in child-components.
 When use the Server Render,please fetch data in this function (getInitialProps) which is in the page of Pages directory.
 
 ### AjaxTranspond-service （be doing）
-You can choose UI library  whatever you want. you just need to convert you own back-end interface address to this service address,and then this service send the interface.
+You can choose UI library  whatever you want. you just need to convert you own back-end interface address to this service address,and then this service send to the back-end interface.
 
 ### Program performance monitoring
 
@@ -89,8 +89,7 @@ Configure a route in the `config/config.js ` and check the system resourse that 
 
 Steps:
 1. Configure the `config/config.js` 
-2. execute `npm run eject`,and then the procedure will automaticly create a start-up script `server.js`
-3. execute `npm run dev`
+2. execute `npm run dev`
 
 ## Deploy
 - command line
@@ -98,6 +97,6 @@ Steps:
 - file packet（The future support）
 
 
-#### translator
+#### Translator
 
-email:593243536@qq.com
+E-mail:593243536@qq.com
