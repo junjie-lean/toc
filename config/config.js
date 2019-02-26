@@ -40,7 +40,7 @@ module.exports = {
         // { Boolean : true } 是否启用滚屏显示http请求,仅dev模式有效
         needTailLog: false,
         // { Boolean : false } 是否需要初始化清除一小时以前创建的log,仅dev模式有效
-        needInitCleanLog: true
+        needInitCleanLog: false
 
     },
     /**========================================================================================= */

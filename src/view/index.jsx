@@ -24,7 +24,7 @@ export default class Index extends React.Component {
       name: this.state.name + 1
     })
   }
-  componentDidMount(){
+  componentDidMount() {
     // console.log(G)
   }
   render() {
@@ -37,6 +37,9 @@ export default class Index extends React.Component {
             <p className="description">
               To get started, edit <code>pages/index.js</code> and save to reload.
             </p>
+            <p className="description">
+              next.js: 基于node的服务端渲染框架
+             </p>
             {/* <Button onClick={this.clickHandle.bind(this)}>事件方式触发跳转</Button>
             <br />
             <Link href="./lean" as="frameWork">

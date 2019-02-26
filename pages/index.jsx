@@ -29,9 +29,7 @@ export default class IndexPage extends React.Component {
     return (
       <div>
         <Index {...this.props} falseworkName='falsework of SSR' />
-        <Link href="/helloWorld">
-          <a>go to hello</a>
-        </Link>
+        
       </div>
     )
   }
