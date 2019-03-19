@@ -41,13 +41,10 @@ export default class Index extends React.Component {
               next.js: 基于node的服务端渲染框架
              </p>
             {/* <Button onClick={this.clickHandle.bind(this)}>事件方式触发跳转</Button>
-            <br />
             <Link href="./lean" as="frameWork">
               <Button>Link方式触发跳转</Button>
             </Link> */}
             <br />
-            {/* <img src={CSR} /> */}
-            {/* <img src='/static/pic/csr.png' /> */}
           </div>
         </div>
       </Container>
