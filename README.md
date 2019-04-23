@@ -11,6 +11,8 @@ Toc.js is a Server Side Render framework based [NEXT](https://nextjs.org),toc.js
 
 toc means "Top Of Cloud";
 
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
+
 ## Installatioin
 The best way to create a toc app is that using the scaffold named [create-toc-app](https://www.npmjs.com/package/create-toc-app)!
 ```javascript
