@@ -1,5 +1,10 @@
 # TOC.JS
 
+This's a version include a Node.js services, it's immature, you may need to go to [here](https://github.com/junjie-lean/toc.serverless/tree/alpha)！
+
+这是包含了Node.js服务的版本，它还不成熟，你可能需要[这个](https://github.com/junjie-lean/toc.serverless/tree/alpha)！
+
+
 ## What is toc.js?
 Toc.js is a Server Side Render framework based [NEXT](https://nextjs.org),toc.js can support：
 
